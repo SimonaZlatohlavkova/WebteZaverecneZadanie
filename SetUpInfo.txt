@@ -5,3 +5,18 @@ prihlasovacie meno: xzlatohlavkova
 heslo: 8vRHsM0WDjrbR4T
 
 link: https://site254.webte.fei.stuba.sk/zz/
+
+
+SFTP - deployment path : /var/www/site254.webte.fei.stuba.sk/zz/
+SSH confuguration:
+host: 147.175.98.254
+username: xzlatohlavkova
+port: 22
+password: 8vRHsM0WDjrbR4T
+
+
+PHP MY ADMIN
+https://site254.webte.fei.stuba.sk/phpmyadmin/index.php?route=/&route=%2F
+login : xzlatohlavkova
+heslo: 8vRHsM0WDjrbR4T
+
