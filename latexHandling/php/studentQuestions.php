@@ -27,6 +27,13 @@ if (isset($_SESSION['latexFile'])) {
         $endLine = strpos($question, '\end{task}');
         $question = substr($question, 0, $endLine);
 
+        preg_match_all('/\$.*?\$/', $question, $matches);
+        foreach ($matches[0] as $match) {
+            $wrappedFormula = '\(' . $match . '\)';
+            $wrappedFormula = str_replace('$', '', $wrappedFormula);
+            $question = str_replace($match, $wrappedFormula, $question);
+        }
+
         $imagePath = '';
 
         if (preg_match('/includegraphics{([^}]+)}/i', $question, $matches)) {
@@ -35,7 +42,8 @@ if (isset($_SESSION['latexFile'])) {
 
         $imageName = basename($imagePath);
 
-        $question = preg_replace('/includegraphics{([^}]+)}/i', '', $question);
+        $question = preg_replace('/\\\\*includegraphics{([^}]+)}\s*\\\\*/i', '', $question);
+        $question = preg_replace('/:\s*\\\\+/i', ':', $question);
 
         $questions[] = array(
             'question' => $question,
@@ -59,6 +67,8 @@ if (isset($_SESSION['latexFile'])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Questions</title>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -79,7 +89,7 @@ if (isset($_SESSION['latexFile'])) {
     if (empty($questions)) {
         echo "<div>No questions found.</div>";
     } else {
-        echo "<div class='question'>" . $randomQuestion['question'] . "</div>";
+        echo "<div id='question' class='question'>" . $randomQuestion['question'] . "</div>";
         if ($randomQuestion['image']) {
             $sqlSelectImage = "SELECT image FROM latexImages WHERE name = ?";
             $stmt = $db->prepare($sqlSelectImage);
@@ -88,7 +98,7 @@ if (isset($_SESSION['latexFile'])) {
 
             if ($row) {
                 $imageData = base64_encode($row['image']);
-                $image = "data:image/png;base64,".$imageData;
+                $image = "data:image/png;base64," . $imageData;
                 echo '<div class="image"><img src="' . $image . '" alt="' . $image . '"></div>';
             } else {
                 echo "Image not found";
