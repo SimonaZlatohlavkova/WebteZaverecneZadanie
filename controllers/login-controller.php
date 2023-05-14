@@ -1,6 +1,9 @@
 <?php
 header("Content-Type: application/json");
 header("Access-Control-Allow-Origin: *");
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 
 $method = $_SERVER["REQUEST_METHOD"];
 

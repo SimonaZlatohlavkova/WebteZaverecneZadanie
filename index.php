@@ -2,6 +2,10 @@
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
+if (isset($_SESSION["login"]) && $_SESSION["login"]) {
+    header("Location: web/restricted.php");
+    exit();
+}
 
 ?>
 
@@ -74,18 +78,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 
     <script>
-        const passwordInput = document.getElementById('password-input');
-        const showPasswordBtn = document.getElementById('showPasswordBtn');
 
-        showPasswordBtn.addEventListener('click', function () {
-            if (passwordInput.type === 'password') {
-                passwordInput.type = 'text';
-                showPasswordBtn.innerHTML = '<i class="fa fa-eye-slash" aria-hidden="true"></i>';
-            } else {
-                passwordInput.type = 'password';
-                showPasswordBtn.innerHTML = '<i class="fa fa-eye" aria-hidden="true"></i>';
-            }
-        });
     </script>
     <!----  <div class="container">
           <h1>Welcome To School Portal</h1>
