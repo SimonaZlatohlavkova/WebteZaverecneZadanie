@@ -1,0 +1,340 @@
+/*-------------Reset-------------*/
+@font-face {
+    font-family:"Libre Franklin Thin";
+    src: url("../font/LibreFranklin-Thin.ttf") format("truetype");
+}
+*{
+    font-family: 'Libre Franklin Thin', sans-serif;
+}
+button {
+    background: none;
+    box-shadow: none;
+    border: none;
+    cursor: pointer;
+}
+button:focus, input:focus {
+    outline: 0;
+}
+html {
+    scroll-behavior: smooth;
+}
+/*-------------Layout-------------*/
+body {
+    line-height: 1.5em;
+    padding: 0;
+    margin: 0;
+}
+section {
+    height: 100vh;
+}
+#home {
+    color: #f857a8;
+    background-color: #ddd;
+}
+#about {
+    background-color: #aaa;
+}
+#work {
+    background-color: #888;
+}
+#contact {
+    background-color: #666;
+}
+/*-------------Helpers-------------*/
+.skew {
+    transform: skew(-20deg);
+}
+.un-skew {
+    transform: skew(20deg);
+}
+/*-------------Nav-------------*/
+#nav-wrapper {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10;
+}
+#nav {
+    background-color: #f7f7ff;
+    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    font-family: "Saira Semi Condensed", sans-serif;
+    height: 4em;
+    overflow: hidden;
+}
+#nav.nav-visible {
+    height: 100%;
+    overflow: auto;
+}
+.nav {
+    display: flex;
+    height: 4em;
+    line-height: 4em;
+    flex-grow: 1;
+}
+.nav-link, .logo {
+    padding: 0 1em;
+}
+span.gradient {
+    background: #57b0f8;
+    background: -webkit-linear-gradient(45deg, #57b0f8, #83edf8);
+    background: linear-gradient(45deg, #57b0f8, #83edf8);
+
+    position: relative;
+    right: 1em;
+    margin-right: auto;
+}
+/*FF5858FF*/
+
+span.gradient:hover {
+    animation-name: logo-hover;
+    animation-duration: 0.3s;
+    animation-fill-mode: forwards;
+    animation-timing-function: cubic-bezier(0.17, 0.57, 0.31, 0.85);
+}
+
+h1.logo {
+    margin-top: 1rem;
+    font-weight: 300;
+    font-size: 1.75em;
+    line-height: 0.75em;
+    color: #fff;
+}
+
+#logoID{
+    color: #fff;
+}
+
+.nav-link {
+    text-transform: uppercase;
+    text-align: center;
+    border-top: 0.5px solid #ddd;
+}
+a:link, a:visited, a:active {
+    text-decoration: none;
+    color: #57b0f8;
+}
+a:hover {
+    color: #57b0f8;
+}
+.right {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.btn-nav {
+    color: #57b0f8;
+    padding-left: 2em;
+    padding-right: 2em;
+}
+
+@keyframes logo-hover {
+    20% {
+        padding-right: 0rem;
+    }
+    100% {
+        padding-right: 5rem;
+    }
+}
+
+input{
+    font-weight:bold;
+    font-size: 1.2rem;
+    line-height: 0.5rem;
+    color: white;
+    background-color:transparent;
+   /* background-color: #f891c5;*/
+    border:transparent;
+
+}
+
+
+input::placeholder{
+    font-weight:bold;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+#toggle {
+    display: none;
+}
+.hamburger {
+    position: absolute;
+    top: 3.5rem;
+    right: 2rem;
+    margin-left: -2em;
+    margin-top: -45px;
+    width: 3rem;
+    height: auto;
+    z-index: 15;
+}
+
+.hamburger div {
+    position: relative;
+    width: 3rem;
+    height: 7px;
+    border-radius: 3px;
+    background-color: #57b0f8;
+    margin-top: 8px;
+    transition: all 0.3s ease-in-out;
+}
+
+/**
+Nav Styles
+**/
+.navSmall {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    top: -100%; left: 0; right: 0; bottom: 0;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0);
+    z-index: 14;
+}
+.navSmall-wrapperSmall{
+    position: relative;
+    overflow: hidden;
+    overflow-y: auto;
+    height: 100%;
+}
+#navSmallHref {
+    text-align: left;
+    margin-left: 25%;
+}
+#navSmallHref a {
+    position: relative;
+    text-decoration: none;
+    color: #57b0f8;
+    font-size: 2em;
+    display: inline-block;
+    margin-top: 1.25em;
+    transition: color 0.2s ease-in-out;
+    letter-spacing: 1px;
+}
+#navSmallHref a:before {
+    content: '';
+    height: 0;
+    position: absolute;
+    width: 0.25em;
+    background-color: white;
+    left: -0.5em;
+    transition: all 0.2s ease-in-out;
+}
+#navSmallHref a:hover {
+    color: white;
+}
+#navSmallHref a:hover:before {
+    height: 100%;
+}
+
+/**
+Animations
+**/
+#toggle:checked + .hamburger .top-bun {
+    transform: rotate(-45deg);
+    margin-top: 25px;
+}
+#toggle:checked + .hamburger .bottom-bun {
+    opacity: 0;
+    transform: rotate(45deg);
+}
+#toggle:checked + .hamburger .meat {
+    transform: rotate(45deg);
+    margin-top: -7px;
+}
+
+#toggle:checked + .hamburger + .navSmall {
+    top: 0;
+    transform: scale(1);
+}
+
+
+
+
+@media (min-width: 600px) {
+    .navSmall{
+        display: none;
+    }
+    .hamburger{
+        display: none;
+    }
+    #nav-wrapper {
+        display: block;
+        overflow: hidden;
+    }
+    #nav {
+        overflow: hidden;
+        flex-direction: row;
+    }
+    .nav-link {
+        border-top: none;
+    }
+    .right {
+        overflow: hidden;
+        flex-direction: row;
+        justify-content: flex-end;
+        position: relative;
+        left: 1.5em;
+        height: auto;
+    }
+    .btn-nav {
+        display: none;
+    }
+
+
+    .nav-link-span {
+        transform: skew(20deg);
+        display: inline-block;
+    }
+    .nav-link {
+        transform: skew(-20deg);
+        color: #777;
+        text-decoration: none;
+    }
+    .nav-link:last-child {
+        padding-right: 3em;
+    }
+    a:hover.nav-link:not(.active) {
+        /*color: #444;
+        background: #ddd;
+        background: linear-gradient(45deg, #fff, #ddd);*/
+        background: #57b0f8;
+        background: -webkit-linear-gradient(45deg, #57b0f8, #0ce8ff);
+        background: linear-gradient(45deg, #57b0f8, #0ce8ff);
+        color:white;
+    }
+    #small{
+        display: none;
+    }
+}
+
+@media(max-width: 600px){
+
+   #nav {
+        display: none;
+        overflow: hidden;
+        flex-direction: column;
+    }
+    .right{
+        display: none;
+    }
+
+
+}
+
+
+
+
