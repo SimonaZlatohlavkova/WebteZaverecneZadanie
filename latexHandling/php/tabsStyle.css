@@ -1,0 +1,56 @@
+
+.card-header{
+
+    color: white;
+    font-weight: bolder;
+    text-decoration: none;
+    border-radius: inherit;
+}
+
+.nav-tabs .active{
+border-radius: 1rem;
+background-color: #136598;
+    color: white;
+}
+
+.centered-container{
+    gap:0.5rem;
+}
+.wholePage{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap:1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.card{
+    height: 80vh;
+}
+@media (max-width: 1120px) {
+
+    .wholePage{
+        width: 100%;
+        padding: 1rem;
+        justify-content: center;
+        flex-direction: column;
+
+    }
+   /* .centered-container {
+        margin-top: 10%;
+        flex-direction: column;
+        align-items: inherit;
+        gap: 0.5rem;
+    }*/
+    .card {
+        margin-top: 5rem;
+        margin-bottom: 1rem;
+        width: 100%;
+        height: 80%;
+
+    }
+
+}
+
+
+

@@ -24,7 +24,7 @@ if (isset($_POST['file-name'])) {
 
     $latexFile = stream_get_contents($tmpFile);
     $_SESSION['latexFile'] = $latexFile;
-
+    $_SESSION['selectedFile']=1;
     fclose($tmpFile);
 }
 
