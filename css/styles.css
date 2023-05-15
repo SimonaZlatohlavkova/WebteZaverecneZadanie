@@ -32,12 +32,12 @@ form{
    width: 30%;
 }
 
-.card hr {
+   /* .card hr {
     width: 35rem;
     margin: auto;
     border-top: 0.25rem solid black;
     border-radius: 35%;
-}
+}*/
 
 @media(max-width: 982px){
 
@@ -57,4 +57,29 @@ form{
 
 }
 
+
+#fileUploadFlex {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    align-items: center;
+}
+
+.card-upload{
+    width: 90%;
+}
+
+#questionsContainer{
+    width: 90vw;
+}
+
+
+#flexBoxCards{
+
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 
