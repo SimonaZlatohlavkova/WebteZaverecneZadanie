@@ -25,40 +25,6 @@ $studentQuestions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if (isset($_SESSION['latexFile'])) {
     $latexFile = $_SESSION['latexFile'];
 
-    // $delimiter = '\begin{task}';
-    // $questionsArray = explode($delimiter, $latexFile);
-    // array_shift($questionsArray);
-
-    // $questions = array();
-    // foreach ($questionsArray as $question) {
-    //     $endLine = strpos($question, '\end{task}');
-    //     $question = substr($question, 0, $endLine);
-
-    //     preg_match_all('/\$.*?\$/', $question, $matches);
-    //     foreach ($matches[0] as $match) {
-    //         $wrappedFormula = '\(' . $match . '\)';
-    //         $wrappedFormula = str_replace('$', '', $wrappedFormula);
-    //         $question = str_replace($match, $wrappedFormula, $question);
-    //     }
-
-    //     $imagePath = '';
-
-    //     if (preg_match('/includegraphics{([^}]+)}/i', $question, $matches)) {
-    //         $imagePath = $matches[1];
-    //     }
-
-    //     $imageName = basename($imagePath);
-
-    //     $question = preg_replace('/\\\\*includegraphics{([^}]+)}\s*\\\\*/i', '', $question);
-    //     $question = preg_replace('/:\s*\\\\+/i', ':', $question);
-
-    //     $questions[] = array(
-    //         'question' => $question,
-    //         'image' => $imageName,
-    //         'name' => $questionName,
-    //         'solution' => $solution
-    //     );
-
     $sectionDelimiter = '\section*{';
     $taskDelimiter = '\begin{task}';
     $solutionDelimiter = '\begin{solution}';
