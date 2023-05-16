@@ -22,21 +22,21 @@ try{
 }
 catch(PDOException $e){
     ECHO $e->getMessage();
-}
 
+
+}
 $query = "SELECT u.id, u.first_name, u.last_name,
             COUNT(sq.id) AS generated_questions,
             SUM(CASE WHEN sq.answer IS NOT NULL THEN 1 ELSE 0 END) AS answered_questions,
-            SUM(COALESCE(sq.correct, 0)) AS total_points         
+            SUM(COALESCE(sq.correct, 0)) AS total_points
             FROM users u
-            LEFT JOIN studentquestions sq ON sq.student_name = CONCAT(u.first_name, ' ', u.last_name)
+            LEFT JOIN studentQuestions sq ON sq.student_name = CONCAT(u.first_name, ' ', u.last_name)
             WHERE u.role = 'student'
             GROUP BY u.id, u.first_name, u.last_name
             ORDER BY u.last_name ASC";
 
 $stmt = $db->query($query);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 //var_dump($results);
 
 
