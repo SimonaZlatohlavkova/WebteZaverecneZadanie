@@ -19,7 +19,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="../css/menu.css" rel="stylesheet"/>
         <link href="../css/styles.css" rel="stylesheet"/>
+
         <link href="../latexHandling/php/test.css" rel="stylesheet"/>
+        <link href="php/latexIndex.css" rel="stylesheet"/>
     </head>
     <body>
 
@@ -31,7 +33,8 @@
             </div>
             </div>
             <div class="nav right">
-                <a href="/controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Odhlásenie</span></span></a>
+                <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Odhlásenie</span></span></a>
+                <a href="../latexHandling/latexIndex.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Príklady</span></span></a>
             </div>
         </nav>
     </header>
@@ -47,13 +50,15 @@
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
             <nav id="navSmallHref">
-                <a href="/controllers/logout-controller.php">Odhlásiť sa</a><br>
+                <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
+            </nav>
+            <nav id="navSmallHref">
+                <a href="../latexHandling/latexIndex.php">Príklady</a><br>
             </nav>
         </div>
     </div>
 
-    <div class="container-fluid" id="fileUploadFlex" >
-
+    <div class="wholePage">
             <div class="card card-upload">
                 <div class="card-body">
                         <h1>Nahrajte LaTex súbor</h1>
