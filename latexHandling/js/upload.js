@@ -27,9 +27,6 @@ const uploadImageButton = document.getElementById('upload-image-button');
 uploadImageButton.addEventListener('click', () => {
 
     const imageInput = document.getElementById('image-input').files[0];
-    const pointsImage = document.getElementById('pointsImage').value;
-    const dateFromImage = document.getElementById('dateFromImage').value;
-    const dateToImage = document.getElementById('dateToImage').value;
 
     if (!imageInput) {
         console.log('No image selected');
@@ -38,9 +35,6 @@ uploadImageButton.addEventListener('click', () => {
 
     const formData = new FormData();
     formData.append('image', imageInput);
-    formData.append('points', pointsImage);
-    formData.append('dateFrom', dateFromImage);
-    formData.append('dateTo', dateToImage);
 
     axios.post('php/upload.php', formData)
         .then((response) => {

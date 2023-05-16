@@ -13,7 +13,7 @@ $language = $_SESSION['lang'] ?? 'SK';
 $db = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$sqlSelect = "SELECT name FROM latexFiles";
+$sqlSelect = "SELECT name FROM latexFiles WHERE (validFrom IS NULL OR validFrom <= CURDATE()) AND (validTo IS NULL OR validTo >= CURDATE())";
 $stmt = $db->query($sqlSelect);
 $names = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
