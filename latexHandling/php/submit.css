@@ -36,6 +36,10 @@ img {
 }
 
 .answerSpan {
+
+    display: inline-block;
+    max-width: 85vw; /* Adjust the maximum width as per your needs */
+    word-wrap: break-word;
     width: 100%;
     height: auto;
     border: 1px solid #313131;

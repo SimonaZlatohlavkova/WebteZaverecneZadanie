@@ -66,17 +66,14 @@ $imageDB = $stmt->fetch(PDO::FETCH_ASSOC);
                 </p>
 
                 <form>
-                    <p><b>Odpoveď: </b> <span id="math-field" class="answerSpan" ></span></p>
+                   <p><b>Odpoveď: </b> <span id="math-field" class="answerSpan" ></span></p>
                     <div class="buttonFlexbox">
                         <button id="backButton" type="button"  onclick="changeLocation()" class="btn btn-primary"> ❮ Späť</button>
                         <button id="submit-answer-button" type="button" class="btn btn-success"> Odovzdať</button>
                     </div>
 
 
-                    <div>
-                        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                    </div>
+
                 </form>
 
             </div>
