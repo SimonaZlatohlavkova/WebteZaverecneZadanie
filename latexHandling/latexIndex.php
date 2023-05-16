@@ -79,6 +79,12 @@ if ($_SESSION["role"] == "student") {
                                     <label for="file-input">
                                         <input  class="form-control" id="file-input" type="file" name="latexFile" accept=".tex" multiple="false">
                                     </label>
+                                    <label for="pointsFile">Počet bodov:</label>
+                                    <input type="text" id="pointsFile">
+                                    <label for="dateFromFile"> Dostupné od:</label>
+                                    <input type="date" id="dateFromFile" onchange="updateDateToMin()">
+                                    <label for="dateToFile"> Dostupné do:</label>
+                                    <input type="date" id="dateToFile">
                                     <button id="upload-button"  class="btn btn-primary" type="button"> Nahrať</button>
                                 </form>
                             </div>
@@ -93,6 +99,12 @@ if ($_SESSION["role"] == "student") {
                                 <label for="image-input">
                                     <input class="form-control" id="image-input" type="file" name="latexImage" multiple="false">
                                 </label>
+                                <label for="pointsImage">Počet bodov:</label>
+                                <input type="text" id="pointsImage">
+                                <label for="dateFromImage"> Dostupné od:</label>
+                                <input type="date" id="dateFromImage" onchange="updateDateToMinImage()">
+                                <label for="dateToImage"> Dostupné do:</label>
+                                <input type="date" id="dateToImage">
                                 <button id="upload-image-button" class="btn btn-primary" type="button"> Nahrať</button>
                             </form>
 
@@ -128,7 +140,22 @@ if ($_SESSION["role"] == "student") {
                 </div>
             </div>
         </div>-->
+    <script>
+        function updateDateToMin() {
+            let dateFromInput = document.getElementById("dateFromFile");
+            let dateToInput = document.getElementById("dateToFile");
 
+            dateToInput.min = dateFromInput.value;
+        }
+
+        function updateDateToMinImage() {
+            let dateFromInput = document.getElementById("dateFromImage");
+            let dateToInput = document.getElementById("dateToImage");
+
+            dateToInput.min = dateFromInput.value;
+        }
+
+    </script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
             integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
             crossorigin="anonymous"></script>
