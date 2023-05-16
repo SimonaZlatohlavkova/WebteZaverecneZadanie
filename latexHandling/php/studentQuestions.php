@@ -17,10 +17,11 @@ $sqlSelect = "SELECT name FROM latexFiles";
 $stmt = $db->query($sqlSelect);
 $names = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$studentName = "Miroslav Sáraz";
+$studentName = $_SESSION['name'];
+$studentMail = $_SESSION['email'];
 $questionExists = false;
 
-$sqlSelectStudentQuestions = "SELECT * FROM studentQuestions WHERE student_name = '$studentName'";
+$sqlSelectStudentQuestions = "SELECT * FROM studentQuestions WHERE student_mail = '$studentMail'";
 $stmt = $db->query($sqlSelectStudentQuestions);
 $studentQuestions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -96,9 +97,9 @@ if (isset($_SESSION['latexFile'])) {
 
         if (!$questionExists) {
             // Insert the question into the database
-            $sqlInsertQuestion = "INSERT INTO studentQuestions (question_name, student_name, question, solution, image) VALUES (?, ?, ?, ?, ?)";
+            $sqlInsertQuestion = "INSERT INTO studentQuestions (question_name, student_mail, student_name, question, solution, image) VALUES (?, ?, ?, ?, ?, ?)";
             $stmt = $db->prepare($sqlInsertQuestion);
-            $stmt->execute([$randomQuestion['sectionName'], $studentName, $randomQuestion['question'], $randomQuestion['solution'], $randomQuestion['image']]);
+            $stmt->execute([$randomQuestion['sectionName'], $studentMail, $studentName, $randomQuestion['question'], $randomQuestion['solution'], $randomQuestion['image']]);
         }
     }
 
@@ -502,7 +503,15 @@ if ($language === "SK") {
                     }
 
 
-                    echo '<a href="submitMath.php?sectionName=' . urlencode($studentQuestion['question_name']) . '"> <b>  Vypracovať </b></a> ';
+                    if ($studentQuestion['answer'] == null){
+                        echo '<a href="submitMath.php?sectionName=' . urlencode($studentQuestion['question_name']) . '"> <b>  Vypracovať </b></a> ';
+                    }
+
+                    if ($studentQuestion['correct'] == 1){
+                        echo '<p>Správne</p>';
+                    } else if ($studentQuestion['correct'] == 0){
+                        echo '<p>Nesprávne</p>';
+                    }
 
                     ?>
                 </div><?php

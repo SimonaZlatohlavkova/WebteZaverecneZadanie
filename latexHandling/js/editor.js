@@ -28,7 +28,7 @@ uploadImageButton.addEventListener('click', () => {
         .then((response) => {
             console.log(response.data);
 
-            // window.location.href = "../php/studentQuestions.php";
+            window.location.href = "../php/studentQuestions.php";
         })
         .catch((error) => console.log(error));
 });

@@ -6,15 +6,17 @@ if (!isset($_GET["sectionName"])) {
     exit;
 }
 
+$studentMail = $_SESSION["email"];
 $questionName = $_GET["sectionName"];
 $_SESSION["questionName"] = $questionName;
+
 $language = $_SESSION['lang'] ?? 'SK';
 require_once "config.php";
 
 $db = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$sqlSelectQuestion = "SELECT * FROM studentQuestions WHERE question_name = '$questionName'";
+$sqlSelectQuestion = "SELECT * FROM studentQuestions WHERE question_name = '$questionName' AND student_mail = '$studentMail'";
 $stmt = $db->query($sqlSelectQuestion);
 $question = $stmt->fetch(PDO::FETCH_ASSOC);
 

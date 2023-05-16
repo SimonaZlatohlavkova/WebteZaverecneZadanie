@@ -16,6 +16,8 @@ if (!isset($_POST["answer"])) {
     exit;
 }
 
+$studentMail = $_SESSION["email"];
+
 require_once "config.php";
 
 $db = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
@@ -23,7 +25,7 @@ $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $answer = $_POST["answer"];
 
-$sqlSelectSolution = "SELECT * FROM studentQuestions WHERE question_name = '$_SESSION[questionName]'";
+$sqlSelectSolution = "SELECT * FROM studentQuestions WHERE question_name = '$_SESSION[questionName]' AND student_mail = '$studentMail'";
 $stmt = $db->query($sqlSelectSolution);
 $solution = $stmt->fetch(PDO::FETCH_ASSOC);
 
@@ -128,9 +130,7 @@ if ($result){
     $correct = 0;
 }
 
-
-//AND student_name = '{$studentName}'
-$sqlUpdateDb = "UPDATE studentQuestions SET answer = '$answer', correct = '$correct' WHERE question_name = '{$_SESSION['questionName']}'";
+$sqlUpdateDb = "UPDATE studentQuestions SET answer = '$answer', correct = '$correct' WHERE question_name = '$_SESSION[questionName]' AND student_mail = '$studentMail'";
 $stmt = $db->prepare($sqlUpdateDb);
 $success = $stmt->execute();
 ?>
