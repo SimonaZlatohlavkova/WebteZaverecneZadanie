@@ -8,7 +8,7 @@ if (!isset($_GET["sectionName"])) {
 
 $questionName = $_GET["sectionName"];
 $_SESSION["questionName"] = $questionName;
-
+$language = $_SESSION['lang'] ?? 'SK';
 require_once "config.php";
 
 $db = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
@@ -36,6 +36,7 @@ $imageDB = $stmt->fetch(PDO::FETCH_ASSOC);
     <title>Submit page</title>
     <link href="submit.css" rel="stylesheet"/>
     <link href="/css/styles.css">
+    <link href="/css/menu.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/98d99917c7.js" crossorigin="anonymous"></script>
@@ -46,40 +47,121 @@ $imageDB = $stmt->fetch(PDO::FETCH_ASSOC);
 </head>
 
 <body>
-<div class="wholePage">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Píklad:
-                <?php echo $questionName; ?></h5>
-            <div>
-                <p>
-                    <?php echo $question['question']; ?>
-                </p>
-                <p>
-                    <?php
-                    if ($imageDB) {
-                        $imageData = base64_encode($imageDB['image']);
-                        $image = "data:image/png;base64," . $imageData;
-                        echo '<div class="image"><img  src="' . $image . '" alt="' . $image . '"></div>';
-                    }
-                    ?>
-                </p>
-
-                <form>
-                   <p><b>Odpoveď: </b> <span id="math-field" class="answerSpan" ></span></p>
-                    <div class="buttonFlexbox">
-                        <button id="backButton" type="button"  onclick="changeLocation()" class="btn btn-primary"> ❮ Späť</button>
-                        <button id="submit-answer-button" type="button" class="btn btn-success"> Odovzdať</button>
-                    </div>
 
 
+<?php
 
-                </form>
+if ($language === "EN") {
+    ?>
+    <div class="wholePage">
+        <div class="languageDiv">
+            <form method="post" action="../../web/language.php">
+                <div class="languageDiv">
+                    <button type="submit" class="ButtonLanguageDiv" style="background: white; border: none" name="buttonSK"><img alt="SK"
+                                                                                         src="https://www.countryflagicons.com/FLAT/24/SK.png">
+                    </button>
+                    <button type="submit" class="ButtonLanguageDiv" style="background: white; border: none" name="buttonEN"><img alt="EN"
+                                                                                         src="https://www.countryflagicons.com/FLAT/24/GB.png">
+                    </button>
+                </div>
+            </form
+        </div>
 
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Assignment:
+                    <?php echo $questionName; ?></h5>
+                <div>
+                    <p>
+                        <?php echo $question['question']; ?>
+                    </p>
+                    <p>
+                        <?php
+                        if ($imageDB) {
+                            $imageData = base64_encode($imageDB['image']);
+                            $image = "data:image/png;base64," . $imageData;
+                            echo '<div class="image"><img  src="' . $image . '" alt="' . $image . '"></div>';
+                        }
+                        ?>
+                    </p>
+
+                    <form>
+                        <p><b>Answer: </b> <span id="math-field" class="answerSpan"></span></p>
+                        <div class="buttonFlexbox">
+                            <button id="backButton" type="button" onclick="changeLocation()" class="btn btn-primary"> ❮
+                                Back
+                            </button>
+                            <button id="submit-answer-button" type="button" class="btn btn-success"> Submit</button>
+                        </div>
+
+
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>
-</div>
+
+    <?php
+}
+?>
+
+<?php
+
+if ($language === "SK") {
+    ?>
+    <div class="wholePage">
+        <div class="languageDiv">
+            <form method="post" action="../../web/language.php">
+                <div class="languageDiv">
+                    <button type="submit" class="ButtonLanguageDiv" style="background: white; border: none" name="buttonSK"><img alt="SK"
+                                                                                         src="https://www.countryflagicons.com/FLAT/24/SK.png">
+                    </button>
+                    <button type="submit" class="ButtonLanguageDiv"  style="background: white; border: none" name="buttonEN"><img alt="EN"
+                                                                                         src="https://www.countryflagicons.com/FLAT/24/GB.png">
+                    </button>
+                </div>
+            </form
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Príklad:
+                    <?php echo $questionName; ?></h5>
+                <div>
+                    <p>
+                        <?php echo $question['question']; ?>
+                    </p>
+                    <p>
+                        <?php
+                        if ($imageDB) {
+                            $imageData = base64_encode($imageDB['image']);
+                            $image = "data:image/png;base64," . $imageData;
+                            echo '<div class="image"><img  src="' . $image . '" alt="' . $image . '"></div>';
+                        }
+                        ?>
+                    </p>
+
+                    <form>
+                        <p><b>Odpoveď: </b> <span id="math-field" class="answerSpan"></span></p>
+                        <div class="buttonFlexbox">
+                            <button id="backButton" type="button" onclick="changeLocation()" class="btn btn-primary"> ❮
+                                Späť
+                            </button>
+                            <button id="submit-answer-button" type="button" class="btn btn-success"> Odovzdať</button>
+                        </div>
+
+
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <?php
+}
+?>
 
 <script>
     function changeLocation() {
