@@ -3,12 +3,24 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if (isset($_SESSION["login"]) && $_SESSION["login"]) {
-    header("Location: web/restricted.php");
-
+    if ($_SESSION["role"] == "teacher") {
+        header("Location: menu/teacherMenu.php");
+        exit();
+    }
+    else if ($_SESSION["role"] == "student") {
+        header("Location: menu/studentMenu.php");
+        exit();
+    }
     exit();
 }
 
+
+
+$language = $_SESSION['lang'] ?? 'SK';
+
+
 ?>
+
 
 <!doctype html>
 <html lang="en">
@@ -29,77 +41,191 @@ if (isset($_SESSION["login"]) && $_SESSION["login"]) {
 
 <body>
 
+<?php
 
-<header id="nav-wrapper">
-    <nav id="nav">
-        <div class="nav left">
-            <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">Školský portál  </a></h1></span>
-            <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
-        </div>
-        <div class="nav right">
-<!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
-            <a href="registration/registration.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Registrácia</span></span></a>
-        </div>
-    </nav>
-</header>
+if ($language === "EN") {
+    ?>
 
-<input id="toggle" type="checkbox">
 
-<label for="toggle" class="hamburger">
-    <div class="top-bun"></div>
-    <div class="meat"></div>
-    <div class="bottom-bun"></div>
-</label>
-
-<div class="navSmall">
-    <div class="navSmall-wrapperSmall">
-        <nav id="navSmallHref">
-            <a href="index.php">Prihlásenie</a><br>
+    <header id="nav-wrapper">
+        <nav id="nav">
+            <div class="nav left">
+                <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">School portal </a></h1></span>
+                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+            </div>
+            <div class="nav right">
+                <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
+                <a href="registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Registration</span></span></a>
+            </div>
         </nav>
-    </div>
-</div>
+    </header>
 
-<div class="container centered-container">
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title">Prihlásenie</h5>
-            <form>
-                <label for="username">
-                    <input class="form-control" id="email-input" type="email" placeholder="Email">
-                </label>
-                <label class="form-label" for="password">
-                    <input class="form-control" id="password-input" type="password" placeholder="Heslo">
-                </label>
-                <button class="btn btn-outline-secondary" type="button" id="showPasswordBtn">
-                    <i class="fas fa-eye" aria-hidden="true"></i></button>
-                <button id="sign-in-button" type="button" class="btn btn-primary"> Prihlásiť sa</button>
-            </form>
+    <input id="toggle" type="checkbox">
+
+    <label for="toggle" class="hamburger">
+        <div class="top-bun"></div>
+        <div class="meat"></div>
+        <div class="bottom-bun"></div>
+    </label>
+
+    <div class="navSmall">
+        <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="registration/registration.php">Registration</a><br>
+            </nav>
         </div>
     </div>
 
+    <div class="languageDiv">
+        <form method="post" action="web/language.php">
+            <div class="languageDiv">
+                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK" src="https://www.countryflagicons.com/FLAT/24/SK.png"></button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN" src="https://www.countryflagicons.com/FLAT/24/GB.png"></button>
+            </div>
+        </form
+    </div>
 
-    <script>
+    <div class="container centered-container">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Sign in</h5>
+                <form>
+                    <label for="username">
+                        <input class="form-control" id="email-input" type="email" placeholder="Email">
+                    </label>
+                    <label class="form-label" for="password">
+                        <input class="form-control" id="password-input" type="password" placeholder="Password">
+                    </label>
+                    <button class="btn btn-outline-secondary" type="button" id="showPasswordBtn">
+                        <i class="fas fa-eye" aria-hidden="true"></i></button>
+                    <button id="sign-in-button" type="button" class="btn btn-primary"> Sign in</button>
+                </form>
+            </div>
+        </div>
 
-    </script>
-    <!----  <div class="container">
-          <h1>Welcome To School Portal</h1>
-          <div class="rectangle">
-              <p class="rect-heading">Authentication</p>
-              <div class="rectangle-content">
-                  <form>
-                      <label for="username">
-                          <input id="email-input" type="email" placeholder="Email">
-                      </label>
-                      <label class="form-label" for="password">
-                          <input id="password-input" type="password" placeholder="Password">
-                      </label>
-                      <button id="sign-in-button" type="button"> Sign In</button>
-                  </form>
 
+        <script>
+
+        </script>
+        <!----  <div class="container">
+              <h1>Welcome To School Portal</h1>
+              <div class="rectangle">
+                  <p class="rect-heading">Authentication</p>
+                  <div class="rectangle-content">
+                      <form>
+                          <label for="username">
+                              <input id="email-input" type="email" placeholder="Email">
+                          </label>
+                          <label class="form-label" for="password">
+                              <input id="password-input" type="password" placeholder="Password">
+                          </label>
+                          <button id="sign-in-button" type="button"> Sign In</button>
+                      </form>
+
+                  </div>
               </div>
-          </div>
-      </div>--->
-</div>
+          </div>--->
+    </div>
+
+
+    <?php
+
+}
+
+?>
+
+
+<?php
+
+if ($language === "SK") {
+    ?>
+
+    <header id="nav-wrapper">
+        <nav id="nav">
+            <div class="nav left">
+                <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">Školský portál  </a></h1></span>
+                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+            </div>
+            <div class="nav right">
+                <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
+                <a href="registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Registrácia</span></span></a>
+            </div>
+        </nav>
+    </header>
+
+    <input id="toggle" type="checkbox">
+
+    <label for="toggle" class="hamburger">
+        <div class="top-bun"></div>
+        <div class="meat"></div>
+        <div class="bottom-bun"></div>
+    </label>
+
+    <div class="navSmall">
+        <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="registration/registration.php">Prihlásenie</a><br>
+            </nav>
+        </div>
+    </div>
+
+    <div class="languageDiv">
+        <form method="post" action="web/language.php">
+            <div class="languageDiv">
+                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK" src="https://www.countryflagicons.com/FLAT/24/SK.png"></button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN" src="https://www.countryflagicons.com/FLAT/24/GB.png"></button>
+            </div>
+        </form
+    </div>
+
+    <div class="container centered-container">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Prihlásenie</h5>
+                <form>
+                    <label for="username">
+                        <input class="form-control" id="email-input" type="email" placeholder="Email">
+                    </label>
+                    <label class="form-label" for="password">
+                        <input class="form-control" id="password-input" type="password" placeholder="Heslo">
+                    </label>
+                    <button class="btn btn-outline-secondary" type="button" id="showPasswordBtn">
+                        <i class="fas fa-eye" aria-hidden="true"></i></button>
+                    <button id="sign-in-button" type="button" class="btn btn-primary"> Prihlásiť sa</button>
+                </form>
+            </div>
+        </div>
+
+
+        <script>
+
+        </script>
+        <!----  <div class="container">
+              <h1>Welcome To School Portal</h1>
+              <div class="rectangle">
+                  <p class="rect-heading">Authentication</p>
+                  <div class="rectangle-content">
+                      <form>
+                          <label for="username">
+                              <input id="email-input" type="email" placeholder="Email">
+                          </label>
+                          <label class="form-label" for="password">
+                              <input id="password-input" type="password" placeholder="Password">
+                          </label>
+                          <button id="sign-in-button" type="button"> Sign In</button>
+                      </form>
+
+                  </div>
+              </div>
+          </div>--->
+    </div>
+
+    <?php
+}
+
+?>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 <script src="scripts/login.js"></script>
 
