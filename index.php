@@ -3,10 +3,19 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if (isset($_SESSION["login"]) && $_SESSION["login"]) {
-    header("Location: web/restricted.php");
-
+    if ($_SESSION["role"] == "teacher") {
+        header("Location: menu/teacherMenu.php");
+        exit();
+    }
+    else if ($_SESSION["role"] == "student") {
+        header("Location: menu/studentMenu.php");
+        exit();
+    }
     exit();
 }
+
+
+
 $language = $_SESSION['lang'] ?? 'SK';
 
 

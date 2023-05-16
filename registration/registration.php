@@ -5,6 +5,14 @@ if (isset($_SESSION['login']) && $_SESSION['login']) {
     header("location: ../index.php");
     exit;
 }
+if ($_SESSION["role"] == "student") {
+    header("Location: studentMenu.php");
+    exit();
+}
+if ($_SESSION["role"] == "teacher") {
+    header("Location: teacherMenu.php");
+    exit();
+}
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

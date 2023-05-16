@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if (!isset($_SESSION["login"]) || !$_SESSION["login"]) {
-    header("Location: ../registration.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -11,7 +11,6 @@ if ($_SESSION["role"] == "teacher") {
     header("Location: ../menu/teacherMenu.php");
     exit();
 }
-
 else if ($_SESSION["role"] == "student") {
     header("Location: ../menu/studentMenu.php");
     exit();
