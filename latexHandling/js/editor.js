@@ -13,20 +13,6 @@ var mathField = MQ.MathField(mathFieldSpan, {
     }
 });
 
-function convertToMaxima(latexCode) {
-    const math = mathjs.create();
-
-    math.import({
-        eta: math.unitStep
-    });
-
-    const expression = latexCode.replace(/\\eta/g, 'eta');
-    const parsedExpression = math.parse(expression);
-    const maximaCode = parsedExpression.toMaxima();
-
-    return maximaCode;
-}
-
 const uploadImageButton = document.getElementById('submit-answer-button');
 uploadImageButton.addEventListener('click', () => {
 
@@ -35,10 +21,8 @@ uploadImageButton.addEventListener('click', () => {
         return;
     }
 
-    const maximaCode = convertToMaxima(latexCode);
-
     const formData = new FormData();
-    formData.append('answer', maximaCode);
+    formData.append('answer', latexCode);
 
     axios.post('../php/answer-evaluation.php', formData)
         .then((response) => {
@@ -48,5 +32,3 @@ uploadImageButton.addEventListener('click', () => {
         })
         .catch((error) => console.log(error));
 });
-
-
