@@ -7,7 +7,7 @@ if (!isset($_SESSION["login"]) || !$_SESSION["login"]) {
     exit();
 }
 
-if ($_SESSION["role"] == "student") {
+if (isset($_SESSION["role"]) && $_SESSION["role"] == "student") {
     header("Location: studentMenu.php");
     exit();
 }
@@ -22,9 +22,9 @@ try{
 }
 catch(PDOException $e){
     ECHO $e->getMessage();
-
-
 }
+
+
 $query = "SELECT u.id, u.first_name, u.last_name,
             COUNT(sq.id) AS generated_questions,
             SUM(CASE WHEN sq.answer IS NOT NULL THEN 1 ELSE 0 END) AS answered_questions,
@@ -140,6 +140,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 ?>
                 </tbody>
             </table>
+            <button id="download-csv" type="button">Stiahnuť CSV</button>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"

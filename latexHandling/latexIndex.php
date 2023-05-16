@@ -48,6 +48,8 @@ if ($language === "SK") {
             </div>
             </div>
             <div class="nav right">
+                <a href="../details/studentDetail.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Prehľad študentov</span></span></a>
                 <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
                                 class="u-nav">Odhlásenie</span></span></a>
                 <a href="../latexHandling/latexIndex.php" class="nav-link"><span class="nav-link-span active"><span
@@ -66,6 +68,9 @@ if ($language === "SK") {
 
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="../details/studentDetail.php">Prehľad študentov</a><br>
+            </nav>
             <nav id="navSmallHref">
                 <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
             </nav>
