@@ -1,0 +1,44 @@
+.card {
+    width: 90vw;
+    height: 90vh;
+    align-self: center;
+    justify-self: center;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Adjust the shadow color and intensity as needed */
+    justify-content: center;
+}
+
+.wholePage {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+img {
+    width: 85vw;
+}
+
+.buttonFlexbox {
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0.5rem;
+    /*justify-content: space-between;*/
+}
+
+.answerSpan {
+    width: 100%;
+    height: auto;
+    border: 1px solid #313131;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
