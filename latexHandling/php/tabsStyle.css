@@ -19,10 +19,18 @@ background-color: #136598;
     gap:1rem;
     flex-wrap: wrap;
     justify-content: center;
+
 }
 .card{
+    width: 30vw;
     height: 80vh;
 }
+
+img {
+    width: 80%;
+}
+
+
 @media (max-width: 1120px) {
 
     .wholePage{
