@@ -282,9 +282,9 @@ if (isset($_SESSION['latexFile'])) {
                     }
 
 
-                    echo '<a href="submitMath.php?sectionName=' . urlencode($studentQuestion['question_name']) . '">Odovzdať</a>';
+                    echo '<a href="submitMath.php?sectionName=' . urlencode($studentQuestion['question_name']) . '"> <b>  Odovzdať </b></a> ';
 
-                    echo "<hr>"; ?>
+                   ?>
                 </div><?php
                 $i++;
                 $first = false;

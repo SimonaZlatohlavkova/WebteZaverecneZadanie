@@ -1,6 +1,5 @@
 
 .card-header{
-
     color: white;
     font-weight: bolder;
     text-decoration: none;
@@ -13,9 +12,6 @@ background-color: #136598;
     color: white;
 }
 
-.centered-container{
-    gap:0.5rem;
-}
 .wholePage{
     width: 100%;
     height: 100%;

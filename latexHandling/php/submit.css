@@ -22,7 +22,7 @@
 }
 
 img {
-    width: 85vw;
+    width: 80%;
 }
 
 .buttonFlexbox {
@@ -33,6 +33,13 @@ img {
     align-items: flex-start;
     gap: 0.5rem;
     /*justify-content: space-between;*/
+}
+.card-body{
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    height: 95%;
+
 }
 
 .answerSpan {
