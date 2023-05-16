@@ -20,3 +20,6 @@ https://site254.webte.fei.stuba.sk/phpmyadmin/index.php?route=/&route=%2F
 login : xzlatohlavkova
 heslo: 8vRHsM0WDjrbR4T
 
+https://site254.webte.fei.stuba.sk/zz/latexHandling/latexIndex.php
+https://site254.webte.fei.stuba.sk/zz/latexHandling/php/studentQuestions.php
+https://site254.webte.fei.stuba.sk/zz/index.php
