@@ -24,4 +24,6 @@ $stmt = $db->query($sqlSelectSolution);
 $solution = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
+echo $_POST["answer"];
+
 ?>

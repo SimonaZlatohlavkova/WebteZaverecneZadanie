@@ -19,12 +19,12 @@ class Database
         $this->host = "localhost";
 
         // localhost
-        $this->username = "root";
-        $this->password = "";
+        //$this->username = "root";
+        //$this->password = "";
 
         // Server
-//        $this->username = "xzlatohlavkova";
-//        $this->password = "8vRHsM0WDjrbR4T";
+        $this->username = "xzlatohlavkova";
+        $this->password = "8vRHsM0WDjrbR4T";
         $this->database = "zz";
         $this->initDatabase();
     }

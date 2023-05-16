@@ -8,12 +8,7 @@ if (!isset($_SESSION["login"]) || !$_SESSION["login"]) {
 }
 
 if ($_SESSION["role"] == "teacher") {
-    header("Location: ../menu/teacherMenu.php");
-    exit();
-}
-
-else if ($_SESSION["role"] == "student") {
-    header("Location: ../menu/studentMenu.php");
+    header("Location: ../index.php");
     exit();
 }
 
@@ -35,13 +30,10 @@ else if ($_SESSION["role"] == "student") {
         <a href="#">School Portal</a>
     </div>
     <div class="navbar-right">
-        <p>Welcome, <?php echo $_SESSION["name"] ?></p>
+        <p>Vitajte, ste prihlásený ako študent pod menom <?php echo $_SESSION["name"] ?></p>
         <a href="../controllers/logout-controller.php">Logout</a>
     </div>
 </nav>
 
 </body>
 </html>
-
-
-

@@ -4,6 +4,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 if (isset($_SESSION["login"]) && $_SESSION["login"]) {
     header("Location: web/restricted.php");
+
     exit();
 }
 

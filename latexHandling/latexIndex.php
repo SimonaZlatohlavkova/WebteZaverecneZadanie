@@ -31,7 +31,7 @@
             </div>
             </div>
             <div class="nav right">
-                <a href="/controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Odhlásenie</span></span></a>
+                <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Odhlásenie</span></span></a>
             </div>
         </nav>
     </header>

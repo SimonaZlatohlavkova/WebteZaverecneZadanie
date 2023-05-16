@@ -63,6 +63,7 @@ $imageDB = $stmt->fetch(PDO::FETCH_ASSOC);
     </form>
     <!-- <p>LaTeX of what you typed: <span id="latex"></span></p> -->
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/11.8.0/math.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathquill/0.10.1/mathquill.js"></script>
