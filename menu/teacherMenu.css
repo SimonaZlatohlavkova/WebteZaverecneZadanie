@@ -1,0 +1,46 @@
+@font-face {
+    font-family: "Libre Franklin Thin";
+    src: url("../font/LibreFranklin-Thin.ttf") format("truetype");
+}
+
+* {
+    font-family: 'Libre Franklin Thin', sans-serif;
+}
+
+.welcomeDiv {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-self: center;
+    justify-self: center;
+    background: linear-gradient(45deg, #57b0f8, #0ce8ff);
+    border-radius: 50% / 0 0 50% 50%; /* Adjust the values to control the curve */
+    overflow: hidden;
+    margin-right: 5%;
+    width: 100vw; /* Adjust the width to your preference */
+    height: 70vh; /* Adjust the height to your preference */
+}
+
+.Welcome {
+    font-size: 5rem;
+    color: white;
+    font-weight: bolder;
+}
+
+.welcomeMessage {
+    font-size: 2rem;
+    color: #efefef;
+
+    font-weight: bolder;
+    padding: 1rem;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .welcomeDiv{
+        border-radius: 80% / 0 0 40% 40%; /* Adjust the values to control the curve */
+        height: 90vh;
+    }
+}
