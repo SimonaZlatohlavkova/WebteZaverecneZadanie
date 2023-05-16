@@ -141,16 +141,17 @@ a:hover {
     }
 }
 
-input{
-    font-weight:bold;
-    font-size: 1.2rem;
-    line-height: 0.5rem;
-    color: white;
-    background-color:transparent;
-   /* background-color: #f891c5;*/
-    border:transparent;
+/*TODO v registracii input su neviditelne ked je to odkomentovane*/
+/*input{*/
+/*    font-weight:bold;*/
+/*    font-size: 1.2rem;*/
+/*    line-height: 0.5rem;*/
+/*    color: white;*/
+/*    background-color:transparent;*/
+/*    !*background-color: #f891c5;*!*/
+/*    border:transparent;*/
 
-}
+/*}*/
 
 
 input::placeholder{

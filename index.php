@@ -37,7 +37,8 @@ if (isset($_SESSION["login"]) && $_SESSION["login"]) {
             <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
         </div>
         <div class="nav right">
-            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>
+<!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
+            <a href="registration/registration.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Registrácia</span></span></a>
         </div>
     </nav>
 </header>

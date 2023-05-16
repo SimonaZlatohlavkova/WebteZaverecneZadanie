@@ -19,8 +19,8 @@ class Database
         $this->host = "localhost";
 
         // localhost
-        //$this->username = "root";
-        //$this->password = "";
+//        $this->username = "root";
+//        $this->password = "";
 
         // Server
         $this->username = "xzlatohlavkova";

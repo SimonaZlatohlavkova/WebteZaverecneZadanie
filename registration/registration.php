@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['login']) && $_SESSION['login']) {
-    header("location: index.php");
+    header("location: registration.php");
     exit;
 }
 
@@ -133,52 +133,32 @@ function test_input($data) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Registrácia</title>
+<!--    <link href="../css/styles.css" rel="stylesheet"/>-->
+    <link href="../css/menu.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/98d99917c7.js" crossorigin="anonymous"></script>
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="#"></a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="index.php">Zoznam olympionikov</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="bestAthletes.php">TOP 10</a>
-                </li>
-            </ul>
-            <?php if ((isset($_SESSION['login'])) || isset($_SESSION['access_token'])) { ?>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item disabled">
-                        <a class="nav-link"> Prihlásený ako: <?php
-                            if(isset($_SESSION['name'])) {
-                                echo $_SESSION['name'];
-                            }
-                            ?></a>
-                    </li>
-                </ul>
-            <?php }
-            else { ?>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="registration.php">Registrácia</a>
-                    </li>
-
-                </ul>
-            <?php } ?>
-        </div>
-    </div>
-</nav>
-
-
 <body>
+
+<header id="nav-wrapper">
+    <nav id="nav">
+        <div class="nav left">
+            <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">Školský portál  </a></h1></span>
+            <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+        </div>
+        <div class="nav right">
+            <a href="../index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>
+<!--            <a href="registration/registration.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Registrácia</span></span></a>-->
+        </div>
+    </nav>
+</header>
+
 <h2>Registračný formulár</h2>
 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
     <label for="name">Meno:</label>
