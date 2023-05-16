@@ -341,6 +341,17 @@ Animations
 }
 
 
+.languageDiv{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.ButtonLanguageDiv{
+    width: 2rem;
+}
+
 
 
 
