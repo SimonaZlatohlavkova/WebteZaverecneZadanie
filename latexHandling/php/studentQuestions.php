@@ -8,6 +8,11 @@ require_once "config.php";
 
 session_start();
 
+if (!isset($_SESSION["login"]) || !$_SESSION["login"]) {
+    header("Location: ../../index.php");
+    exit();
+}
+
 $language = $_SESSION['lang'] ?? 'SK';
 
 $db = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
