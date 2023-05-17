@@ -54,6 +54,8 @@ if ($language === "EN") {
                 <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
             </div>
             <div class="nav right">
+                <a href="informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">User Guide</span></span></a>
                 <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
                 <a href="registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
                                 class="u-nav">Registration</span></span></a>
@@ -71,6 +73,9 @@ if ($language === "EN") {
 
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="informations/informations.php">User Guide</a><br>
+            </nav>
             <nav id="navSmallHref">
                 <a href="registration/registration.php">Registration</a><br>
             </nav>
@@ -148,6 +153,8 @@ if ($language === "SK") {
                 <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
             </div>
             <div class="nav right">
+                <a href="informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Návod</span></span></a>
                 <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
                 <a href="registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
                                 class="u-nav">Registrácia</span></span></a>
@@ -165,6 +172,9 @@ if ($language === "SK") {
 
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="informations/informations.php">Návod</a><br>
+            </nav>
             <nav id="navSmallHref">
                 <a href="registration/registration.php">Prihlásenie</a><br>
             </nav>

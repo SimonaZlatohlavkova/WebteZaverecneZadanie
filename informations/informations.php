@@ -45,7 +45,7 @@ if ($language === "EN") {
             </div>
 
             <div class="nav right">
-                <a href="../controllers/login-controller.php" class="nav-link"><span class="nav-link-span active"><span
+                <a href="../index.php" class="nav-link"><span class="nav-link-span active"><span
                             class="u-nav">Sign up</span></span></a>
                 <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
                 <a href="../registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
@@ -65,7 +65,7 @@ if ($language === "EN") {
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
             <nav id="navSmallHref">
-                <a href="../controllers/login-controller.php">Sing up</a><br>
+                <a href="../index.php">Sing up</a><br>
             </nav>
             <nav id="navSmallHref">
                 <a href="../registration/registration.php">Registration</a><br>
@@ -145,7 +145,7 @@ if ($language === "SK") {
                 <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
             </div>
             <div class="nav right">
-                <a href="../controllers/login-controller.php" class="nav-link"><span class="nav-link-span active"><span
+                <a href="../index.php" class="nav-link"><span class="nav-link-span active"><span
                             class="u-nav">Prihlásenie</span></span></a>
                 <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
                 <a href="../registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
@@ -165,7 +165,7 @@ if ($language === "SK") {
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
             <nav id="navSmallHref">
-                <a href="../registration/registration.php">Prihlásenie</a><br>
+                <a href="../index.php">Prihlásenie</a><br>
             </nav>
             <nav id="navSmallHref">
                 <a href="../registration/registration.php">Registrácia</a><br>
