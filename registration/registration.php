@@ -9,7 +9,7 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] == "student") {
     header("Location: studentMenu.php");
     exit();
 }
-if ( isset($_SESSION["role"]) && $_SESSION["role"] == "teacher") {
+if (isset($_SESSION["role"]) && $_SESSION["role"] == "teacher") {
     header("Location: teacherMenu.php");
     exit();
 }
@@ -28,61 +28,122 @@ $errors = array();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $form_valid = true;
 
-    if (empty($_POST["name"])) {
-        $nameErr = "Meno musí byť vyplnené";
-        $form_valid = false;
-    } else {
-        $name = test_input($_POST["name"]);
-        // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž]{2,30}$/", $name)) {
-            $nameErr = "Meno môže obsahovať iba písmená";
+    if ($language === 'SK') {
+        if (empty($_POST["name"])) {
+            $nameErr = "Meno musí byť vyplnené";
             $form_valid = false;
+        } else {
+            $name = test_input($_POST["name"]);
+            // check if name only contains letters and whitespace
+            if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž]{2,30}$/", $name)) {
+                $nameErr = "Meno môže obsahovať iba písmená";
+                $form_valid = false;
+            }
+        }
+
+        if (empty($_POST["surname"])) {
+            $surnameErr = "Priezvisko musí byť vyplnené";
+            $form_valid = false;
+        } else {
+            $surname = test_input($_POST["surname"]);
+            // check if name only contains letters and whitespace
+            if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž ]{2,30}$/", $surname)) {
+                $surnameErr = "Priezvisko môže obsahovať iba písmená";
+                $form_valid = false;
+            }
+        }
+
+        if (empty($_POST["email"])) {
+            $emailErr = "Email je povinný";
+            $form_valid = false;
+        } else {
+            $email = test_input($_POST["email"]);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Nesprávny tvar emailu";
+                $form_valid = false;
+            }
+        }
+
+
+        if (empty($_POST["password"])) {
+            $passwordErr = "Heslo je povinné";
+            $form_valid = false;
+        } else {
+            $passwordForm = test_input($_POST["password"]);
+            if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž\d]{8,64}$/u", $passwordForm)) {
+                $passwordErr = "Heslo musí obsahovať aspoň 8 znakov a obsahovať len písmená a čísla";
+                $form_valid = false;
+            }
+        }
+
+        if (empty($_POST["usernameForm"])) {
+            $usernameErr = "Používateľské meno je povinné";
+            $form_valid = false;
+        } else {
+            $usernameForm = test_input($_POST["usernameForm"]);
+            if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž\d]{6,20}$/u", $usernameForm)) {
+                $usernameErr = "Používateľské meno musí obsahovať aspoň 6 znakov a obsahovať len písmená a čísla";
+                $form_valid = false;
+            }
         }
     }
-
-    if (empty($_POST["surname"])) {
-        $surnameErr = "Priezvisko musí byť vyplnené";
-        $form_valid = false;
-    } else {
-        $surname = test_input($_POST["surname"]);
-        // check if name only contains letters and whitespace
-        if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž ]{2,30}$/", $surname)) {
-            $surnameErr = "Priezvisko môže obsahovať iba písmená";
+    if($language==='EN'){
+        if (empty($_POST["name"])) {
+            $nameErr = "Name is required";
             $form_valid = false;
+        } else {
+            $name = test_input($_POST["name"]);
+            // check if name only contains letters and whitespace
+            if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž]{2,30}$/", $name)) {
+                $nameErr = "Name can include only letters";
+                $form_valid = false;
+            }
         }
-    }
 
-    if (empty($_POST["email"])) {
-        $emailErr = "Email is required";
-        $form_valid = false;
-    } else {
-        $email = test_input($_POST["email"]);
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            $emailErr = "Nesprávny tvar emailu";
+        if (empty($_POST["surname"])) {
+            $surnameErr = "Surname is required";
             $form_valid = false;
+        } else {
+            $surname = test_input($_POST["surname"]);
+            // check if name only contains letters and whitespace
+            if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž ]{2,30}$/", $surname)) {
+                $surnameErr = "Surname can include only letters";
+                $form_valid = false;
+            }
         }
-    }
 
-
-    if (empty($_POST["password"])) {
-        $passwordErr = "Heslo je povinné";
-        $form_valid = false;
-    } else {
-        $passwordForm = test_input($_POST["password"]);
-        if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž\d]{8,64}$/u", $passwordForm)) {
-            $passwordErr = "Heslo musí obsahovať aspoň 8 znakov";
+        if (empty($_POST["email"])) {
+            $emailErr = "Email is required";
             $form_valid = false;
+        } else {
+            $email = test_input($_POST["email"]);
+            if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                $emailErr = "Wrong format of email";
+                $form_valid = false;
+            }
         }
-    }
 
-    if (empty($_POST["usernameForm"])) {
-        $usernameErr = "Používateľské meno je povinné";
-        $form_valid = false;
-    } else {
-        $usernameForm = test_input($_POST["usernameForm"]);
-        if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž\d]{6,20}$/u", $usernameForm)) {
-            $usernameErr = "Používateľské meno musí obsahovať aspoň 6 znakov";
+
+        if (empty($_POST["password"])) {
+            $passwordErr = "Password is required";
             $form_valid = false;
+        } else {
+            $passwordForm = test_input($_POST["password"]);
+            if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž\d]{8,64}$/u", $passwordForm)) {
+                $passwordErr = "Password must include only letters and numbers, at least 8 characters";
+                $form_valid = false;
+            }
+        }
+
+        if (empty($_POST["usernameForm"])) {
+            $usernameErr = "Username is required";
+            $form_valid = false;
+        } else {
+            $usernameForm = test_input($_POST["usernameForm"]);
+            if (!preg_match("/^[a-zA-ZÁáÄäČčĎďÉéÍíĹĺĽľŇňÓóÔôÖöŔŕŘřŠšŤťÚúÝýŽž\d]{6,20}$/u", $usernameForm)) {
+                $usernameErr = "Username must include only letters and numbers, at least 6 characters";
+                $form_valid = false;
+            }
         }
     }
 
@@ -109,24 +170,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             if ($result['email'] === $email) {
                 $loginErr = "Požívateľ s týmto e-mailom už existuje!";
                 if ($language === "SK") {
-                ?>
-                <div class="toast show" style="position: absolute; top:1rem; z-index: 100; right:1rem ">
-                    <div class="toast-header" style="background: #980019; color: white">
-                        <strong class="mr-auto text">POZOR!</strong>
-                        <button type="button" class="btn-close" style="color: white;" data-bs-dismiss="toast"></button>
+                    ?>
+                    <div class="toast show" style="position: absolute; top:1rem; z-index: 100; right:1rem ">
+                        <div class="toast-header" style="background: #980019; color: white">
+                            <strong class="mr-auto text">POZOR!</strong>
+                            <button type="button" class="btn-close" style="color: white;"
+                                    data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">
+                            <p>Požívateľ s týmto e-mailom už existuje!</p>
+                        </div>
                     </div>
-                    <div class="toast-body">
-                        <p>Požívateľ s týmto e-mailom už existuje!</p>
-                    </div>
-                </div>
-                <?php
+                    <?php
                 }
                 if ($language === "EN") {
                     ?>
                     <div class="toast show" style="position: absolute; top:1rem; z-index: 100; right:1rem ">
                         <div class="toast-header" style="background: #980019; color: white">
                             <strong class="mr-auto text">ATTENTION!</strong>
-                            <button type="button" class="btn-close" style="color: white;" data-bs-dismiss="toast"></button>
+                            <button type="button" class="btn-close" style="color: white;"
+                                    data-bs-dismiss="toast"></button>
                         </div>
                         <div class="toast-body">
                             <p>User with this e-mail already exists!</p>
@@ -142,23 +205,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                 $loginErr = "Požívateľ s týmto užívateľským menom už existuje!";
                 if ($language === "SK") {
-                ?>
-                <div class="toast show" style="position: absolute; top:1rem; z-index: 100; right:1rem ">
-                    <div class="toast-header" style="background: #980019; color: white">
-                        <strong class="mr-auto text">POZOR!</strong>
-                        <button type="button" class="btn-close" style="color: white;" data-bs-dismiss="toast"></button>
+                    ?>
+                    <div class="toast show" style="position: absolute; top:1rem; z-index: 100; right:1rem ">
+                        <div class="toast-header" style="background: #980019; color: white">
+                            <strong class="mr-auto text">POZOR!</strong>
+                            <button type="button" class="btn-close" style="color: white;"
+                                    data-bs-dismiss="toast"></button>
+                        </div>
+                        <div class="toast-body">
+                            <p>Požívateľ s týmto užívateľským menom už existuje!</p>
+                        </div>
                     </div>
-                    <div class="toast-body">
-                        <p>Požívateľ s týmto užívateľským menom už existuje!</p>
-                    </div>
-                </div>
                 <?php }
                 if ($language === "EN") {
                     ?>
                     <div class="toast show" style="position: absolute; top:1rem; z-index: 100; right:1rem ">
                         <div class="toast-header" style="background: #980019; color: white">
                             <strong class="mr-auto text">ATTENTION!</strong>
-                            <button type="button" class="btn-close" style="color: white;" data-bs-dismiss="toast"></button>
+                            <button type="button" class="btn-close" style="color: white;"
+                                    data-bs-dismiss="toast"></button>
                         </div>
                         <div class="toast-body">
                             <p>User with this username already exists!</p>
@@ -178,17 +243,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $nameErr = $emailErr = $passwordErr = $surnameErr = $loginErr = $usernameForm = "";
             $name = $email = $passwordForm = $surname = $login = $success = $usernameErr = "";
             if ($language === "SK") {
-            ?>
-            <div class="toast show" style="position: absolute; top:1rem; z-index: 100; right:1rem ">
-                <div class="toast-header" style="background: #00ab08; color: white">
-                    <strong class="mr-auto text">Registrácia</strong>
-                    <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                ?>
+                <div class="toast show" style="position: absolute; top:1rem; z-index: 100; right:1rem ">
+                    <div class="toast-header" style="background: #00ab08; color: white">
+                        <strong class="mr-auto text">Registrácia</strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body">
+                        <p>Registrácia prebehla úspešne!</p>
+                    </div>
                 </div>
-                <div class="toast-body">
-                    <p>Registrácia prebehla úspešne!</p>
-                </div>
-            </div>
-            <?php
+                <?php
             }
 
             if ($language === "EN") {
@@ -249,104 +314,106 @@ function test_input($data)
 if ($language === "SK") {
     ?>
 
-<header id="nav-wrapper">
-    <nav id="nav">
-        <div class="nav left">
-            <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">Školský portál  </a></h1></span>
-            <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
-        </div>
-        <div class="nav right">
-            <a href="../informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
-                            class="u-nav">Návod</span></span></a>
-            <a href="../index.php" class="nav-link"><span class="nav-link-span active"><span
-                            class="u-nav">Prihlásenie</span></span></a>
-            <!--            <a href="registration/registration.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Registrácia</span></span></a>-->
-        </div>
-    </nav>
-</header>
-
-<input id="toggle" type="checkbox">
-
-<label for="toggle" class="hamburger">
-    <div class="top-bun"></div>
-    <div class="meat"></div>
-    <div class="bottom-bun"></div>
-</label>
-
-<div class="navSmall">
-    <div class="navSmall-wrapperSmall">
-        <nav id="navSmallHref">
-            <a href="../informations/informations.php">Návod</a><br>
+    <header id="nav-wrapper">
+        <nav id="nav">
+            <div class="nav left">
+                <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">Školský portál  </a></h1></span>
+                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+            </div>
+            <div class="nav right">
+                <a href="../informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Návod</span></span></a>
+                <a href="../index.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Prihlásenie</span></span></a>
+                <!--            <a href="registration/registration.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Registrácia</span></span></a>-->
+            </div>
         </nav>
-        <nav id="navSmallHref">
-            <a href="../index.php">Prihlásenie</a><br>
-        </nav>
+    </header>
+
+    <input id="toggle" type="checkbox">
+
+    <label for="toggle" class="hamburger">
+        <div class="top-bun"></div>
+        <div class="meat"></div>
+        <div class="bottom-bun"></div>
+    </label>
+
+    <div class="navSmall">
+        <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="../informations/informations.php">Návod</a><br>
+            </nav>
+            <nav id="navSmallHref">
+                <a href="../index.php">Prihlásenie</a><br>
+            </nav>
+        </div>
     </div>
-</div>
 
-<div class="languageDiv">
-    <form method="post" action="../web/language.php">
-        <div class="languageDiv">
-            <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK"
-                                                                                 src="https://www.countryflagicons.com/FLAT/24/SK.png">
-            </button>
-            <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN"
-                                                                                 src="https://www.countryflagicons.com/FLAT/24/GB.png">
-            </button>
-        </div>
-    </form
-</div>
-<div class="wholePage">
-
-    <div class="card" style=" box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
-        <div class="card-body">
-            <h5 class="card-title">Registračný formulár</h5>
-            <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <div class="form-group">
-                    <label for="name">Meno:</label>
-                    <input type="text" class="form-control" id="name" name="name" value="<?php echo $name; ?>">
-                    <span class="error_msg" style="color: red;"><?php echo $nameErr; ?></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="surname">Priezvisko:</label>
-                    <input type="text" class="form-control" id="surname" name="surname" value="<?php echo $surname; ?>">
-                    <span class="error_msg" style="color: red;"><?php echo $surnameErr; ?></span>
-                </div>
-                <div class="form-group">
-                    <label for="usernameForm">Používateľské meno:</label>
-                    <input type="text" class="form-control" id="usernameForm" name="usernameForm"
-                           value="<?php echo $usernameForm; ?>">
-                    <span class="error_msg" style="color: red;"><?php echo $usernameErr; ?></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text" class="form-control" id="email" name="email" value="<?php echo $email; ?>">
-                    <span class="error_msg" style="color: red;"><?php echo $emailErr; ?></span>
-                </div>
-
-                <div class="form-group">
-                    <label for="password">Heslo:</label>
-                    <input type="password" class="form-control" id="password" name="password">
-                    <span class="error_msg" style="color: red;"><?php echo $passwordErr; ?></span>
-                </div>
-                <div class="form-group">
-                    <input type="checkbox" class="form-check-input" id="teacher" name="teacher">
-                    <label for="teacher">Ste učiteľ?</label>
-                </div>
-                <br>
-                <button class="btn btn-outline-secondary" style="width: 100%;" type="button" id="showPasswordBtn">
-                    <i class="fas fa-eye" aria-hidden="true"></i></button>
-
-                <button class="btn btn-primary" style="margin-top: 1rem; width: 100%;" type="submit" value="Submit">Registrovať
+    <div class="languageDiv">
+        <form method="post" action="../web/language.php">
+            <div class="languageDiv">
+                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/SK.png">
                 </button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/GB.png">
+                </button>
+            </div>
+        </form
+    </div>
+    <div class="wholePage">
 
-            </form>
+        <div class="card" style=" box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);">
+            <div class="card-body">
+                <h5 class="card-title">Registračný formulár</h5>
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                    <div class="form-group">
+                        <label for="name">Meno:</label>
+                        <input type="text" class="form-control" id="name" name="name" value="<?php echo $name; ?>">
+                        <span class="error_msg" style="color: red;"><?php echo $nameErr; ?></span>
+                    </div>
 
+                    <div class="form-group">
+                        <label for="surname">Priezvisko:</label>
+                        <input type="text" class="form-control" id="surname" name="surname"
+                               value="<?php echo $surname; ?>">
+                        <span class="error_msg" style="color: red;"><?php echo $surnameErr; ?></span>
+                    </div>
+                    <div class="form-group">
+                        <label for="usernameForm">Používateľské meno:</label>
+                        <input type="text" class="form-control" id="usernameForm" name="usernameForm"
+                               value="<?php echo $usernameForm; ?>">
+                        <span class="error_msg" style="color: red;"><?php echo $usernameErr; ?></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="text" class="form-control" id="email" name="email" value="<?php echo $email; ?>">
+                        <span class="error_msg" style="color: red;"><?php echo $emailErr; ?></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Heslo:</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                        <span class="error_msg" style="color: red;"><?php echo $passwordErr; ?></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" class="form-check-input" id="teacher" name="teacher">
+                        <label for="teacher">Ste učiteľ?</label>
+                    </div>
+                    <br>
+                    <button class="btn btn-outline-secondary" style="width: 100%;" type="button" id="showPasswordBtn">
+                        <i class="fas fa-eye" aria-hidden="true"></i></button>
+
+                    <button class="btn btn-primary" style="margin-top: 1rem; width: 100%;" type="submit" value="Submit">
+                        Registrovať
+                    </button>
+
+                </form>
+
+            </div>
         </div>
     </div>
-</div>
 
 <?php } ?>
 
@@ -418,7 +485,8 @@ if ($language === "EN") {
 
                     <div class="form-group">
                         <label for="surname">Surname:</label>
-                        <input type="text" class="form-control" id="surname" name="surname" value="<?php echo $surname; ?>">
+                        <input type="text" class="form-control" id="surname" name="surname"
+                               value="<?php echo $surname; ?>">
                         <span class="error_msg" style="color: red;"><?php echo $surnameErr; ?></span>
                     </div>
                     <div class="form-group">
@@ -447,7 +515,8 @@ if ($language === "EN") {
                     <button class="btn btn-outline-secondary" style="width: 100%;" type="button" id="showPasswordBtn">
                         <i class="fas fa-eye" aria-hidden="true"></i></button>
 
-                    <button class="btn btn-primary" style="margin-top: 1rem; width: 100%;" type="submit" value="Submit">Create account
+                    <button class="btn btn-primary" style="margin-top: 1rem; width: 100%;" type="submit" value="Submit">
+                        Create account
                     </button>
 
                 </form>
