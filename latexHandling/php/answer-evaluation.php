@@ -19,6 +19,7 @@ if (!isset($_POST["answer"])) {
 if (!isset($_SESSION["login"]) || !$_SESSION["login"]) {
     header("Location: ../../index.php");
     exit();
+    
 }
 
 $studentMail = $_SESSION["email"];
