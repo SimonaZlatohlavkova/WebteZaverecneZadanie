@@ -12,7 +12,6 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] == "student") {
     exit();
 }
 
-$id = $_GET['id'];
 require_once "config.php";
 
 
@@ -27,7 +26,7 @@ try {
 $query = "SELECT u.id, u.first_name, u.last_name,
             COUNT(sq.id) AS generated_questions,
             SUM(CASE WHEN sq.answer IS NOT NULL THEN 1 ELSE 0 END) AS answered_questions,
-            SUM(COALESCE(sq.correct, 0)) AS total_points
+            SUM(COALESCE(sq.points, 0)) AS total_points
             FROM users u
             LEFT JOIN studentQuestions sq ON sq.student_name = CONCAT(u.first_name, ' ', u.last_name)
             WHERE u.role = 'student'
@@ -171,7 +170,7 @@ if ($language === "SK") {
                 </tbody>
             </table>
             </div>
-            <button id="download-csv" type="button" class="btn btn-primary">Stiahnuť CSV</button>
+            <button id="download-csv-sk" type="button" class="btn btn-primary">Stiahnuť CSV</button>
         </div>
     </div>
 
@@ -276,7 +275,7 @@ if ($language === "EN") {
                     <th>Id</th>
                     <th>Name and surname</th>
                     <th>Number of assignments</th>
-                    <th>Number of submited assignmetns</th>
+                    <th>Number of submitted assignments</th>
                     <th>Points</th>
                 </tr>
                 </thead>
@@ -300,7 +299,7 @@ if ($language === "EN") {
                 </tbody>
             </table>
             </div>
-            <button id="download-csv" type="button" class="btn btn-primary">Download CSV</button>
+            <button id="download-csv-en" type="button" class="btn btn-primary">Download CSV</button>
         </div>
     </div>
 

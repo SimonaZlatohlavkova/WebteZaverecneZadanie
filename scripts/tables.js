@@ -1,34 +1,18 @@
-$(document).ready(function () {
-    $("#table").dataTable( {
-        "columns": [
-            { "width": "10%" },
-            { "width": "25%" },
-            { "width": "20%" },
-            { "width": "20%" },
-            { "width": "20%" },
-        ],
-        "order": [[ 0, "asc" ]],
-        "language": {
-            "lengthMenu": "Zobraziť _MENU_ riadkov",
-            "zeroRecords": "Žiadne dáta",
-            "info": "Strana _PAGE_ z _PAGES_",
-            "infoEmpty": "Nie sú k dispozícii žiadne záznamy",
-            "infoFiltered": "(filtrované z celkového počtu _MAX_ záznamov)",
-            "paginate": {
-                "next": "Ďalšia",
-                "previous": "Predošlá"
-            },
-            "search": "Hľadať: "
-        }
+
+const downloadButtonSK = document.getElementById("download-csv-sk");
+if (downloadButtonSK != null) {
+    downloadButtonSK.addEventListener("click", function () {
+        exportTableToCSV("tableSK", "Prehľad študentov.csv");
     });
-});
 
+}
 
-
-const downloadButton = document.getElementById("download-csv");
-downloadButton.addEventListener("click", function () {
-   exportTableToCSV("table", "table.csv");
-});
+const downloadButtonEN = document.getElementById("download-csv-en");
+if (downloadButtonEN != null) {
+    downloadButtonEN.addEventListener("click", function () {
+        exportTableToCSV("tableEN", "Students.csv");
+    });
+}
 
 function exportTableToCSV(tableId, filename) {
     let csv = [];
@@ -44,7 +28,8 @@ function exportTableToCSV(tableId, filename) {
     }
 
     // Download CSV file
-    const csvFile = new Blob([csv.join('\n')], { type: 'text/csv' });
+    const csvContent = '\uFEFF' + csv.join('\n');
+    const csvFile = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
 
     if (window.navigator.msSaveOrOpenBlob) {
         window.navigator.msSaveOrOpenBlob(csvFile, filename);
