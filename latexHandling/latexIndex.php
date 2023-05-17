@@ -50,10 +50,11 @@ if ($language === "SK") {
             <div class="nav right">
                 <a href="../details/studentDetail.php" class="nav-link"><span class="nav-link-span active"><span
                                 class="u-nav">Prehľad študentov</span></span></a>
-                <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
-                                class="u-nav">Odhlásenie</span></span></a>
+
                 <a href="../latexHandling/latexIndex.php" class="nav-link"><span class="nav-link-span active"><span
                                 class="u-nav">Príklady</span></span></a>
+                <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Odhlásenie</span></span></a>
             </div>
         </nav>
     </header>
@@ -72,10 +73,10 @@ if ($language === "SK") {
                 <a href="../details/studentDetail.php">Prehľad študentov</a><br>
             </nav>
             <nav id="navSmallHref">
-                <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
+                <a href="../latexHandling/latexIndex.php">Príklady</a><br>
             </nav>
             <nav id="navSmallHref">
-                <a href="../latexHandling/latexIndex.php">Príklady</a><br>
+                <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
             </nav>
         </div>
     </div>
@@ -145,10 +146,13 @@ if ($language === "EN") {
             </div>
             </div>
             <div class="nav right">
-                <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
-                                class="u-nav">Log out</span></span></a>
+                <a href="../details/studentDetail.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Students</span></span></a>
+
                 <a href="../latexHandling/latexIndex.php" class="nav-link"><span class="nav-link-span active"><span
                                 class="u-nav">Assignments</span></span></a>
+                <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Log out</span></span></a>
             </div>
         </nav>
     </header>
@@ -164,10 +168,13 @@ if ($language === "EN") {
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
             <nav id="navSmallHref">
-                <a href="../controllers/logout-controller.php">Log out</a><br>
+                <a href="../details/studentDetail.php">Students</a><br>
             </nav>
             <nav id="navSmallHref">
                 <a href="../latexHandling/latexIndex.php">Assignments</a><br>
+            </nav>
+            <nav id="navSmallHref">
+                <a href="../controllers/logout-controller.php">Log out</a><br>
             </nav>
         </div>
     </div>

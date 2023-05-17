@@ -77,10 +77,10 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <div class="nav right">
                     <a href="../details/studentDetail.php" class="nav-link"><span class="nav-link-span active"><span
                                     class="u-nav">Prehľad študentov</span></span></a>
-                    <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
-                                    class="u-nav">Odhlásenie</span></span></a>
                     <a href="../latexHandling/latexIndex.php" class="nav-link"><span class="nav-link-span active"><span
                                     class="u-nav">Príklady</span></span></a>
+                    <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
+                                    class="u-nav">Odhlásenie</span></span></a>
                 </div>
             </nav>
         </header>
@@ -98,11 +98,12 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <nav id="navSmallHref">
                     <a href="../details/studentDetail.php">Prehľad študentov</a><br>
                 </nav>
-                <nav id="navSmallHref">
-                    <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
-                </nav>
+
                 <nav id="navSmallHref">
                     <a href="../latexHandling/latexIndex.php">Príklady</a><br>
+                </nav>
+                <nav id="navSmallHref">
+                    <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
                 </nav>
             </div>
         </div>
