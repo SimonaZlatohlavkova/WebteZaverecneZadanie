@@ -1,0 +1,17 @@
+.tableDiv{
+    width: 80%;
+}
+
+.wholePage {
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+
+}
