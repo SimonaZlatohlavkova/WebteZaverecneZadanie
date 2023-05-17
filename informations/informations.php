@@ -202,65 +202,29 @@ if ($language === "EN") {
 
                 <br>
                 <div id="instructions">
-                    <h6><b>->Registrácia </b></h6>
-                    <p>V prípade, že užívateľ nie je registrovaný, je potrebné sa pri prvom požití systému
-                        zaregistrovať.
-                        Táto možnosť je v pravej hornej časti obrazovky a po jej
-                        zvolení sa otvorí formulár. Po vyplnení a validácii povinných polí je ešte nutné zvoliť, či je
-                        nový
-                        užívateľ učiteľ. V prípade, že možnosť zostane nezvolená, užívateľ je automaticky študent.
-                        O úspešnej registrácii informuje upozornenie na obrazovke a používateľ sa môže prihlásiť.</p>
-                    <h6><b>-> Prihlásenie</b></h6>
-                    <p>Registrovaný používateľ zadá jedinečný email a heslo uvedené pri registrácii. Po úšešnom
-                        prihlásení
-                        je presmerovaný do svojej časti aplikácie na základe role vybranej pri registrácii.</p>
-                    <h6><b>-> Dvojjazyčosť</b></h6>
-                    <p>Na každej stránke je možné zvoliť jazyk stránky kliknutím na vlajky. Stránka je dostupná v
-                        slovenskom
-                        a anglickom jazyku</p>
+                    <h6><b>-> Registration </b></h6>
+                    <p>If the user is not registered, it is necessary to register upon first use of the system.
+                        This option is located in the upper right corner of the screen, and upon selection, a form will open. After filling out and validating the mandatory fields, it is necessary to choose whether the new user is a teacher. If the option remains unselected, the user is automatically considered a student. A notification on the screen will inform about successful registration, and the user can proceed to login.</p>
+                    <h6><b>-> Login</b></h6>
+                    <p>A registered user enters their unique email and the password provided during registration. After successful login, they are redirected to their respective section of the application based on the role chosen during registration.</p>
+                    <h6><b>-> Bilingualism</b></h6>
+                    <p>On each page, it is possible to select the language of the page by clicking on the flags. The page is available in Slovak and English languages.</p>
                     <div style="border-bottom: 1px solid grey">
-                        <h5><b>Návod - učiteľ </b></h5>
+                        <h5><b>Teacher's Guide</b></h5>
                     </div>
                     <br>
-                    <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa učiteľ prihlási.
-                        Na
-                        navigačnej lište môže zvoliť, či chce zobraziť prehľad študentov, nahrať nový príklad alebo sa
-                        odhlásiť</p>
-                    <h6><b>-> Prehľad študentov </b></h6>
-                    <p>Pokiaľ si učiteľ zvolí možnosť "Prehľad študentov", zobrazí sa mu tabuľka so všetkými
-                        zaregistrovanými študentmi, spolu s počtom doteraz vygenerovaných úloh, počtom už odovzdaných
-                        úloh a
-                        súčtom získaných bodov daného študenta.
-                        Po kliknutí na meno študenta sa učiteľovi zobrazí podrobný prehľad vygenerovaných úloh. Pri
-                        každej
-                        úlohe je názov úlohy, správna odpoveď a maximálny počet bodov, ktorý môže študent získať.
-                        Pokiaľ už študent úlohu vypracoval, zobrazí sa aj jeho odpoveď, informácia o správnosti jeho
-                        odpovede a získaný počet bodov.</p>
-                    <h6><b>-> Príklady</b></h6>
-                    <p>Po kliknutí na možnosť "Príklady" sa učiteľovi zobrazí formulár na nahranie LaTex súboru s
-                        príkladmi.
-                        Učiteľ zvolí súbor, zadá počet bodov, ktoré má študent možnosť získať
-                        a rozsah dátumov, kedy je možné vygenerovať si príklad. Pokiaľ nevyberie rozsah dátumov, príklad
-                        je
-                        možné vygenerovať si kedykoľvek. Pokiaľ k súboru je nutné nahrať aj obrázok, je možné nahrať ho
-                        vo
-                        formulári nižšie</p>
+                    <p>Upon logging into the system, the screen displays information about the name under which the teacher is logged in. On the navigation bar, they can choose whether to view the overview of students, upload a new assignment, or log out.</p>
+                    <h6><b>-> Students </b></h6>
+                    <p>If the teacher selects the "Students" option, a table with all registered students will be displayed, along with the number of assignments generated so far, the number of submitted assignments, and the total points obtained by each student. By clicking on a student's name, the teacher will be able to view a detailed overview of the generated assignment. Each assignment will display the assignment title, correct answer, and the maximum number of points that a student can receive. If a student has already completed the assignment, their answer, information about the correctness of their response, and the number of points obtained will also be displayed.</p>
+                    <h6><b>-> Assignments</b></h6>
+                    <p>By clicking on the "Assignments" option, the teacher will be presented with a form to upload a LaTex file with assignments. The teacher selects the file, enters the number of points that a student can earn, and specifies the date range during which the assignment can be generated. If no date range is selected, the assignment can be generated at any time. If an image needs to be uploaded along with the file, it can be uploaded using the form below.</p>
                     <div style="border-bottom: 1px solid grey">
-                        <h5><b>Návod - študent</b></h5>
+                        <h5><b>Student's Guide</b></h5>
                     </div>
                     <br>
-                    <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa študent prihlási.
-                        Na
-                        navigačnej lište môže zvoliť, či chce prejsť do časti "príklady" alebo sa odhlásiť </p>
-                    <h6><b>-> Príklady</b></h6>
-                    <p>Pokiaľ si študent zvolí možnosť "Príklady", zobrazí sa mu stránka, kde je možné vygenerovať nový
-                        príklad podľa zvoleného mena. Po vygenerovaní príkladu sa príklad pridá do zoznamu
-                        príkladov v susednej záložke. V tejto záložke je po kliknutí na príklad možné jeho vypracovanie,
-                        pokiaľ ešte vypracovaný nie je, prípadne zobrazenie hodnotenia v prípade, že je
-                        príklad už vypracovaný. Po zvolení možnosti "Vypracovať" je užívateľ presunutý na obrazovku s
-                        detailom príkladu, kde môže príklad vypracovať a odovzdať, alebo sa vrátiť späť na prehľad
-                        príkladov</p>
-
+                    <p>Upon logging into the system, the screen displays information about the name under which the student is logged in. On the navigation bar, they can choose whether to go to the "Assignments" section or log out.</p>
+                    <h6><b>-> Assignments</b></h6>
+                    <p>If the student selects the "Assignments" option, they will be directed to a page where they can generate a new assignment based on the chosen name. After generating the assignment, it will be added to the list of assignment in the adjacent tab. By clicking on an assignment in the tab, they can work on it if it hasn't been completed yet or view the grading if the assignment has already been completed. By selecting the "Complete" option, the user will be redirected to the assignment detail screen, where they can complete and submit the assignment or go back to the assignment overview.</p>
                 </div>
             </div>
         </div>
