@@ -91,6 +91,16 @@ if ($language === "EN") {
         </form
     </div>
 
+    <div class="toast show"  id="toastLogIN" style="position: absolute; top:1rem; z-index: 100; right:1rem; display: none">
+        <div class="toast-header" style="background: #980019; color: white">
+            <strong class="mr-auto text">ATTENTION!</strong>
+        </div>
+
+        <div class="toast-body">
+            <p>Password or Login is not correct!</p>
+        </div>
+    </div>
+
     <div class="container centered-container">
         <div class="card">
             <div class="card-body">
@@ -188,6 +198,15 @@ if ($language === "SK") {
                 <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN" src="https://www.countryflagicons.com/FLAT/24/GB.png"></button>
             </div>
         </form
+    </div>
+
+    <div class="toast show" id="toastLogIN" style="position: absolute; top:1rem; z-index: 100; right:1rem; display: none">
+        <div class="toast-header" style="background: #980019; color: white">
+            <strong class="mr-auto text">POZOR!</strong>
+        </div>
+        <div class="toast-body">
+            <p>Nesprávne meno alebo heslo!</p>
+        </div>
     </div>
 
     <div class="container centered-container">
