@@ -185,11 +185,30 @@ if ($language === "SK") {
     <div class="container centered-container">
         <div class="card">
             <div class="card-body">
-                <h5 class="card-title">Prihlásenie</h5>
-
-
-
-
+                <h5 class="card-title">Návod</h5>
+                <h6>Registrácia</h6>
+                <p>V prípade, že užívateľ nie je registrovaný, je potrebné sa pri prvom požití systému zaregistrovať. Táto možnosť je v pravej hornej časti obrazovky a po jej
+                    zvolení sa otvorí formulár. Po vyplnení a validácii povinných polí je ešte nutné zvoliť, či je nový užívateľ učiteľ. V prípade, že možnosť zostane nezvolená, užívateľ je automaticky študent.
+                    O úspešnej registrácii informuje upozornenie na obrazovke a používateľ sa môže prihlásiť.</p>
+                <h6>Prihlásenie</h6>
+                <p>Registrovaný používateľ zadá jedinečný email a heslo uvedené pri registrácii. Po úšešnom prihlásení je presmerovaný do svojej časti aplikácie na základe role vybranej pri registrácii.</p>
+                <h6>Dvojjazyčosť</h6>
+                <p>Na každej stránke je možné zvoliť jazyk stránky kliknutím na vlajky. Stránka je dostupná v slovenskom a anglickom jazyku</p>
+                <h5>Návod - učiteľ</h5>
+                <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa učiteľ prihlási. Na navigačnej lište môže zvoliť, či chce zobraziť prehľad študentov, nahrať nový príklad alebo sa odhlásiť</p>
+                <h6>Prehľad študentov</h6>
+                <p>Pokiaľ si učiteľ zvolí možnosť "Prehľad študentov", zobrazí sa mu tabuľka so všetkými zaregistrovanými študentmi, spolu s počtom doteraz vygenerovaných úloh, počtom už odovzdaných úloh a súčtom získaných bodov daného študenta.
+                    Po kliknutí na meno študenta sa učiteľovi zobrazí podrobný prehľad vygenerovaných úloh. Pri každej úlohe je názov úlohy, správna odpoveď a maximálny počet bodov, ktorý môže študent získať.
+                    Pokiaľ už študent úlohu vypracoval, zobrazí sa aj jeho odpoveď, informácia o správnosti jeho odpovede a získaný počet bodov.</p>
+                <h6>Príklady</h6>
+                <p>Po kliknutí na možnosť "Príklady" sa učiteľovi zobrazí formulár na nahranie LaTex súboru s príkladmi. Učiteľ zvolí súbor, zadá počet bodov, ktoré má študent možnosť získať
+                    a rozsah dátumov, kedy je možné vygenerovať si príklad. Pokiaľ nevyberie rozsah dátumov, príklad je možné vygenerovať si kedykoľvek. Pokiaľ k súboru je nutné nahrať aj obrázok, je možné nahrať ho vo formulári nižšie</p>
+                <h5>Návod - študent</h5>
+                <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa študent prihlási. Na navigačnej lište môže zvoliť, či chce prejsť do časti "príklady" alebo sa odhlásiť </p>
+                <h6>Príklady</h6>
+                <p>Pokiaľ si študent zvolí možnosť "Príklady", zobrazí sa mu stránka, kde je možné vygenerovať nový príklad podľa zvoleného mena. Po vygenerovaní príkladu sa príklad pridá do zoznamu
+                príkladov v susednej záložke. V tejto záložke je po kliknutí na príklad možné jeho vypracovanie, pokiaľ ešte vypracovaný nie je, prípadne zobrazenie hodnotenia v prípade, že je
+                príklad už vypracovaný. Po zvolení možnosti "Vypracovať" je užívateľ presunutý na obrazovku s detailom príkladu, kde môže príklad vypracovať a odovzdať, alebo sa vrátiť späť na prehľad príkladov</p>
 
             </div>
         </div>
