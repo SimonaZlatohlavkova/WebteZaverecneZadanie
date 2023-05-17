@@ -17,6 +17,8 @@ $sqlSelect = "SELECT name FROM latexFiles WHERE (validFrom IS NULL OR validFrom 
 $stmt = $db->query($sqlSelect);
 $names = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+
+
 $studentName = $_SESSION['name'];
 $studentMail = $_SESSION['email'];
 $questionExists = false;
@@ -28,6 +30,8 @@ $studentQuestions = $stmt->fetchAll(PDO::FETCH_ASSOC);
 if (isset($_SESSION['latexFile'])) {
     $latexFile = $_SESSION['latexFile'];
 
+    $points = ($_SESSION['points']);
+
     $sectionDelimiter = '\section*{';
     $taskDelimiter = '\begin{task}';
     $solutionDelimiter = '\begin{solution}';
@@ -36,13 +40,16 @@ if (isset($_SESSION['latexFile'])) {
     array_shift($sectionsArray);
 
     $questions = array();
-
+    $index=0;
     foreach ($sectionsArray as $section) {
+
+
         $sectionParts = explode($taskDelimiter, $section);
         $sectionName = substr($sectionParts[0], 0, strpos($sectionParts[0], '}'));
 
         $tasksArray = array_slice($sectionParts, 1);
         foreach ($tasksArray as $task) {
+
             $taskParts = explode($solutionDelimiter, $task);
             $taskContent = substr($taskParts[0], 0, strpos($taskParts[0], '\end{task}'));
             $solutionContent = substr($taskParts[1], 0, strpos($taskParts[1], '\end{solution}'));
@@ -70,13 +77,16 @@ if (isset($_SESSION['latexFile'])) {
                 'sectionName' => $sectionName,
                 'question' => $taskContent,
                 'solution' => $solutionContent,
-                'image' => $imageName
+                'image' => $imageName,
             );
         }
     }
 
+
+
     $randomIndex = array_rand($questions);
     $randomQuestion = $questions[$randomIndex];
+
 
 
     // if ($randomQuestion) {
@@ -87,6 +97,8 @@ if (isset($_SESSION['latexFile'])) {
     if ($randomQuestion) {
         $questionExists = false;
 
+
+
         // Check if the question already exists in the database
         foreach ($studentQuestions as $question) {
             if ($question['question'] === $randomQuestion['question'] && $question['solution'] === $randomQuestion['solution']) {
@@ -96,14 +108,16 @@ if (isset($_SESSION['latexFile'])) {
         }
 
         if (!$questionExists) {
+
             // Insert the question into the database
-            $sqlInsertQuestion = "INSERT INTO studentQuestions (question_name, student_mail, student_name, question, solution, image) VALUES (?, ?, ?, ?, ?, ?)";
+            $sqlInsertQuestion = "INSERT INTO studentQuestions (question_name, student_mail, student_name, question, solution, image, maxPoints) VALUES (?, ?, ?, ?, ?, ?, ?)";
             $stmt = $db->prepare($sqlInsertQuestion);
-            $stmt->execute([$randomQuestion['sectionName'], $studentMail, $studentName, $randomQuestion['question'], $randomQuestion['solution'], $randomQuestion['image']]);
+            $stmt->execute([$randomQuestion['sectionName'], $studentMail, $studentName, $randomQuestion['question'], $randomQuestion['solution'], $randomQuestion['image'], $points]);
         }
     }
 
     unset($_SESSION['latexFile']);
+    unset($_SESSION['points']);
 }
 
 ?>
@@ -148,6 +162,8 @@ if ($language === "EN") {
                 <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
             </div>
             <div class="nav right">
+                <a href="../../informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">User guide</span></span></a>
                 <a href="../../controllers/logout-controller.php" class="nav-link"><span
                             class="nav-link-span active"><span
                                 class="u-nav">Log out</span></span></a>
@@ -166,6 +182,9 @@ if ($language === "EN") {
 
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="../../informations/informations.php">User guide</a><br>
+            </nav>
             <nav id="navSmallHref">
                 <a href="../../controllers/logout-controller.php">Log out</a><br>
             </nav>
@@ -370,6 +389,8 @@ if ($language === "SK") {
                 <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
             </div>
             <div class="nav right">
+                <a href="../../informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Návod</span></span></a>
                 <a href="../../controllers/logout-controller.php" class="nav-link"><span
                             class="nav-link-span active"><span
                                 class="u-nav">Odhlásenie</span></span></a>
@@ -388,6 +409,9 @@ if ($language === "SK") {
 
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="../../informations/informations.php">Návod</a><br>
+            </nav>
             <nav id="navSmallHref">
                 <a href="../../controllers/logout-controller.php">Odhlásenie</a><br>
             </nav>

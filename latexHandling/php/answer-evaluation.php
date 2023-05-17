@@ -28,6 +28,7 @@ $answer = $_POST["answer"];
 $sqlSelectSolution = "SELECT * FROM studentQuestions WHERE question_name = '$_SESSION[questionName]' AND student_mail = '$studentMail'";
 $stmt = $db->query($sqlSelectSolution);
 $solution = $stmt->fetch(PDO::FETCH_ASSOC);
+$maxPoints = $solution['maxPoints'];
 
 function convertLatexToMaxima($latexCode)
 {
@@ -126,11 +127,13 @@ echo $result;
 $correct = 0;
 if ($result){
     $correct = 1;
+    $points = $maxPoints;
 } else {
     $correct = 0;
+    $points = 0;
 }
 
-$sqlUpdateDb = "UPDATE studentQuestions SET answer = '$answer', correct = '$correct' WHERE question_name = '$_SESSION[questionName]' AND student_mail = '$studentMail'";
+$sqlUpdateDb = "UPDATE studentQuestions SET answer = '$answer', correct = '$correct', points = '$points' WHERE question_name = '$_SESSION[questionName]' AND student_mail = '$studentMail'";
 $stmt = $db->prepare($sqlUpdateDb);
 $success = $stmt->execute();
 ?>

@@ -40,7 +40,14 @@ function send() {
         .then((response) => {
             console.log(response.data);
             const data = response.data;
+            console.log("login")
+            if (data.type === "error"&& data.code === 400) {
+                console.log("error")
+                document.getElementById("toastLogIN").style.display="block"
+            }
             if (data.type === "login" && data.code === 200) {
+                console.log('login')
+                document.getElementById("toastLogIN").style.display="none"
                 location.reload();
             }
         }).catch(error => console.error(error));
