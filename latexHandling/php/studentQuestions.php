@@ -162,6 +162,8 @@ if ($language === "EN") {
                 <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
             </div>
             <div class="nav right">
+                <a href="../../informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">User guide</span></span></a>
                 <a href="../../controllers/logout-controller.php" class="nav-link"><span
                             class="nav-link-span active"><span
                                 class="u-nav">Log out</span></span></a>
@@ -180,6 +182,9 @@ if ($language === "EN") {
 
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="../../informations/informations.php">User guide</a><br>
+            </nav>
             <nav id="navSmallHref">
                 <a href="../../controllers/logout-controller.php">Log out</a><br>
             </nav>
@@ -384,6 +389,8 @@ if ($language === "SK") {
                 <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
             </div>
             <div class="nav right">
+                <a href="../../informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Návod</span></span></a>
                 <a href="../../controllers/logout-controller.php" class="nav-link"><span
                             class="nav-link-span active"><span
                                 class="u-nav">Odhlásenie</span></span></a>
@@ -402,6 +409,9 @@ if ($language === "SK") {
 
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="../../informations/informations.php">Návod</a><br>
+            </nav>
             <nav id="navSmallHref">
                 <a href="../../controllers/logout-controller.php">Odhlásenie</a><br>
             </nav>

@@ -48,6 +48,8 @@ if ($language === "SK") {
             </div>
             </div>
             <div class="nav right">
+                <a href="../informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Návod</span></span></a>
                 <a href="../details/studentDetail.php" class="nav-link"><span class="nav-link-span active"><span
                                 class="u-nav">Prehľad študentov</span></span></a>
 
@@ -69,6 +71,9 @@ if ($language === "SK") {
 
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="../informations/informations.php">Návod</a><br>
+            </nav>
             <nav id="navSmallHref">
                 <a href="../details/studentDetail.php">Prehľad študentov</a><br>
             </nav>
@@ -146,6 +151,8 @@ if ($language === "EN") {
             </div>
             </div>
             <div class="nav right">
+                <a href="../informations/informations.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">User guide</span></span></a>
                 <a href="../details/studentDetail.php" class="nav-link"><span class="nav-link-span active"><span
                                 class="u-nav">Students</span></span></a>
 
@@ -167,6 +174,9 @@ if ($language === "EN") {
 
     <div class="navSmall">
         <div class="navSmall-wrapperSmall">
+            <nav id="navSmallHref">
+                <a href="../informations/informations.php">User guide</a><br>
+            </nav>
             <nav id="navSmallHref">
                 <a href="../details/studentDetail.php">Students</a><br>
             </nav>
