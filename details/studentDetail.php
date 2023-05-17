@@ -56,7 +56,8 @@ $language = $_SESSION['lang'] ?? 'SK';
     <link href="../css/styles.css" type="text/css" rel="stylesheet">
     <link href="../css/menu.css" rel="stylesheet"/>
     <link href="studentsDetailStyle.css" rel="stylesheet"/>
-    <link href="../menu/teacherMenu.css" rel="stylesheet"/>
+
+
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
@@ -69,7 +70,7 @@ $language = $_SESSION['lang'] ?? 'SK';
 
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
     <script rel="script" type="text/javascript" src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
-
+    <link href="../css/menu.css" rel="stylesheet"/>
 </head>
 <body>
 

@@ -4,8 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 
-
-
 $language = $_SESSION['lang'] ?? 'SK';
 
 
@@ -36,98 +34,240 @@ $language = $_SESSION['lang'] ?? 'SK';
 if ($language === "EN") {
     ?>
 
+    <?php if (isset($_SESSION["login"]) && $_SESSION["login"]) {
+        if ($_SESSION["role"] == "teacher") {
+            ?>
+            <header id="nav-wrapper">
+                <nav id="nav">
+                    <div class="nav left">
+                        <span class="gradient skew"><h1 class="logo un-skew"><a
+                                        id="logoID">School portal  </a></h1></span>
+                        <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+                    </div>
+                    <div class="nav right">
+                        <a href="../informations/informations.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">User guide</span></span></a>
+                        <a href="../details/studentDetail.php" class="nav-link"><span class="nav-link-span active"><span
+                                        class="u-nav">Students</span></span></a>
 
-    <header id="nav-wrapper">
-        <nav id="nav">
-            <div class="nav left">
-                <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">School portal </a></h1></span>
-                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+                        <a href="../latexHandling/latexIndex.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Assignments</span></span></a>
+                        <a href="../controllers/logout-controller.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Log out</span></span></a>
+                    </div>
+                </nav>
+            </header>
+
+            <input id="toggle" type="checkbox">
+
+            <label for="toggle" class="hamburger">
+                <div class="top-bun"></div>
+                <div class="meat"></div>
+                <div class="bottom-bun"></div>
+            </label>
+
+            <div class="navSmall">
+                <div class="navSmall-wrapperSmall">
+                    <nav id="navSmallHref">
+                        <a href="../informations/informations.php">User guide</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../details/studentDetail.php">Students</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../latexHandling/latexIndex.php">Assignments</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../controllers/logout-controller.php">Log out</a><br>
+                    </nav>
+                </div>
             </div>
 
-            <div class="nav right">
-                <a href="../index.php" class="nav-link"><span class="nav-link-span active"><span
-                            class="u-nav">Sign up</span></span></a>
-                <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
-                <a href="../registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
-                            class="u-nav">Registration</span></span></a>
+        <?php } else if (isset($_SESSION["login"]) && $_SESSION["login"]) {
+            if ($_SESSION["role"] == "student") {
+            }
+            ?>
+            <header id="nav-wrapper">
+                <nav id="nav">
+                    <div class="nav left">
+                        <span class="gradient skew"><h1 class="logo un-skew"><a
+                                        id="logoID">School portal  </a></h1></span>
+                        <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+                    </div>
+                    <div class="nav right">
+                        <a href="../informations/informations.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">User guide</span></span></a>
+                        <a href="../latexHandling/php/studentQuestions.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Assignments</span></span></a>
+                        <a href="../controllers/logout-controller.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Log out</span></span></a>
+                    </div>
+                </nav>
+            </header>
+
+            <input id="toggle" type="checkbox">
+
+            <label for="toggle" class="hamburger">
+                <div class="top-bun"></div>
+                <div class="meat"></div>
+                <div class="bottom-bun"></div>
+            </label>
+
+            <div class="navSmall">
+                <div class="navSmall-wrapperSmall">
+                    <nav id="navSmallHref">
+                        <a href="../informations/informations.php">User guide</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../latexHandling/php/studentQuestions.php">Assignmetns</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../controllers/logout-controller.php">Log out</a><br>
+                    </nav>
+                </div>
             </div>
-        </nav>
-    </header>
 
-    <input id="toggle" type="checkbox">
 
-    <label for="toggle" class="hamburger">
-        <div class="top-bun"></div>
-        <div class="meat"></div>
-        <div class="bottom-bun"></div>
-    </label>
+        <?php }
+    } else { ?>
 
-    <div class="navSmall">
-        <div class="navSmall-wrapperSmall">
-            <nav id="navSmallHref">
-                <a href="../index.php">Sing up</a><br>
+        <header id="nav-wrapper">
+            <nav id="nav">
+                <div class="nav left">
+                    <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">School portal  </a></h1></span>
+                    <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+                </div>
+                <div class="nav right">
+                    <a href="../index.php" class="nav-link"><span class="nav-link-span active"><span
+                                    class="u-nav">Sign in</span></span></a>
+                    <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
+                    <a href="../registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
+                                    class="u-nav">Registration</span></span></a>
+                </div>
             </nav>
-            <nav id="navSmallHref">
-                <a href="../registration/registration.php">Registration</a><br>
-            </nav>
+        </header>
 
+        <input id="toggle" type="checkbox">
+
+        <label for="toggle" class="hamburger">
+            <div class="top-bun"></div>
+            <div class="meat"></div>
+            <div class="bottom-bun"></div>
+        </label>
+
+        <div class="navSmall">
+            <div class="navSmall-wrapperSmall">
+                <nav id="navSmallHref">
+                    <a href="../index.php">Sign in</a><br>
+                </nav>
+                <nav id="navSmallHref">
+                    <a href="../registration/registration.php">Registration</a><br>
+                </nav>
+            </div>
         </div>
-    </div>
+
+    <?php } ?>
 
     <div class="languageDiv">
         <form method="post" action="../web/language.php">
             <div class="languageDiv">
-                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK" src="https://www.countryflagicons.com/FLAT/24/SK.png"></button>
-                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN" src="https://www.countryflagicons.com/FLAT/24/GB.png"></button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/SK.png">
+                </button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/GB.png">
+                </button>
             </div>
         </form
     </div>
 
-    <div class="container centered-container">
-        <div class="card">
+    <div class="wholePage">
+
+        <div class="card" style="width: 90vw; margin: 1rem">
             <div class="card-body">
-                <h5 class="card-title">Sign in</h5>
-                <form>
-                    <label for="username">
-                        <input class="form-control" id="email-input" type="email" placeholder="Email">
-                    </label>
-                    <label class="form-label" for="password">
-                        <input class="form-control" id="password-input" type="password" placeholder="Password">
-                    </label>
-                    <button class="btn btn-outline-secondary" type="button" id="showPasswordBtn">
-                        <i class="fas fa-eye" aria-hidden="true"></i></button>
-                    <button id="sign-in-button" type="button" class="btn btn-primary"> Sign in</button>
-                </form>
+                <div style="border-bottom: 1px solid black">
+                    <div style="display: flex; flex-direction: row; justify-content: space-between">
+                        <h3 class="card-title"><b>User guid </b></h3>
+                        <div>
+                            <button id="print" class="btn btn-primary" onclick="printDiv()"> <i class="fa-solid fa-cloud-arrow-down" style="color: #ffffff;"></i>  Save</button>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div id="instructions">
+                    <h6><b>->Registrácia </b></h6>
+                    <p>V prípade, že užívateľ nie je registrovaný, je potrebné sa pri prvom požití systému
+                        zaregistrovať.
+                        Táto možnosť je v pravej hornej časti obrazovky a po jej
+                        zvolení sa otvorí formulár. Po vyplnení a validácii povinných polí je ešte nutné zvoliť, či je
+                        nový
+                        užívateľ učiteľ. V prípade, že možnosť zostane nezvolená, užívateľ je automaticky študent.
+                        O úspešnej registrácii informuje upozornenie na obrazovke a používateľ sa môže prihlásiť.</p>
+                    <h6><b>-> Prihlásenie</b></h6>
+                    <p>Registrovaný používateľ zadá jedinečný email a heslo uvedené pri registrácii. Po úšešnom
+                        prihlásení
+                        je presmerovaný do svojej časti aplikácie na základe role vybranej pri registrácii.</p>
+                    <h6><b>-> Dvojjazyčosť</b></h6>
+                    <p>Na každej stránke je možné zvoliť jazyk stránky kliknutím na vlajky. Stránka je dostupná v
+                        slovenskom
+                        a anglickom jazyku</p>
+                    <div style="border-bottom: 1px solid grey">
+                        <h5><b>Návod - učiteľ </b></h5>
+                    </div>
+                    <br>
+                    <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa učiteľ prihlási.
+                        Na
+                        navigačnej lište môže zvoliť, či chce zobraziť prehľad študentov, nahrať nový príklad alebo sa
+                        odhlásiť</p>
+                    <h6><b>-> Prehľad študentov </b></h6>
+                    <p>Pokiaľ si učiteľ zvolí možnosť "Prehľad študentov", zobrazí sa mu tabuľka so všetkými
+                        zaregistrovanými študentmi, spolu s počtom doteraz vygenerovaných úloh, počtom už odovzdaných
+                        úloh a
+                        súčtom získaných bodov daného študenta.
+                        Po kliknutí na meno študenta sa učiteľovi zobrazí podrobný prehľad vygenerovaných úloh. Pri
+                        každej
+                        úlohe je názov úlohy, správna odpoveď a maximálny počet bodov, ktorý môže študent získať.
+                        Pokiaľ už študent úlohu vypracoval, zobrazí sa aj jeho odpoveď, informácia o správnosti jeho
+                        odpovede a získaný počet bodov.</p>
+                    <h6><b>-> Príklady</b></h6>
+                    <p>Po kliknutí na možnosť "Príklady" sa učiteľovi zobrazí formulár na nahranie LaTex súboru s
+                        príkladmi.
+                        Učiteľ zvolí súbor, zadá počet bodov, ktoré má študent možnosť získať
+                        a rozsah dátumov, kedy je možné vygenerovať si príklad. Pokiaľ nevyberie rozsah dátumov, príklad
+                        je
+                        možné vygenerovať si kedykoľvek. Pokiaľ k súboru je nutné nahrať aj obrázok, je možné nahrať ho
+                        vo
+                        formulári nižšie</p>
+                    <div style="border-bottom: 1px solid grey">
+                        <h5><b>Návod - študent</b></h5>
+                    </div>
+                    <br>
+                    <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa študent prihlási.
+                        Na
+                        navigačnej lište môže zvoliť, či chce prejsť do časti "príklady" alebo sa odhlásiť </p>
+                    <h6><b>-> Príklady</b></h6>
+                    <p>Pokiaľ si študent zvolí možnosť "Príklady", zobrazí sa mu stránka, kde je možné vygenerovať nový
+                        príklad podľa zvoleného mena. Po vygenerovaní príkladu sa príklad pridá do zoznamu
+                        príkladov v susednej záložke. V tejto záložke je po kliknutí na príklad možné jeho vypracovanie,
+                        pokiaľ ešte vypracovaný nie je, prípadne zobrazenie hodnotenia v prípade, že je
+                        príklad už vypracovaný. Po zvolení možnosti "Vypracovať" je užívateľ presunutý na obrazovku s
+                        detailom príkladu, kde môže príklad vypracovať a odovzdať, alebo sa vrátiť späť na prehľad
+                        príkladov</p>
+
+                </div>
             </div>
         </div>
 
-
-        <script>
-
-        </script>
-        <!----  <div class="container">
-              <h1>Welcome To School Portal</h1>
-              <div class="rectangle">
-                  <p class="rect-heading">Authentication</p>
-                  <div class="rectangle-content">
-                      <form>
-                          <label for="username">
-                              <input id="email-input" type="email" placeholder="Email">
-                          </label>
-                          <label class="form-label" for="password">
-                              <input id="password-input" type="password" placeholder="Password">
-                          </label>
-                          <button id="sign-in-button" type="button"> Sign In</button>
-                      </form>
-
-                  </div>
-              </div>
-          </div>--->
     </div>
 
-
     <?php
-
 }
 
 ?>
@@ -138,103 +278,237 @@ if ($language === "EN") {
 if ($language === "SK") {
     ?>
 
-    <header id="nav-wrapper">
-        <nav id="nav">
-            <div class="nav left">
-                <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">Školský portál  </a></h1></span>
-                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+    <?php if (isset($_SESSION["login"]) && $_SESSION["login"]) {
+        if ($_SESSION["role"] == "teacher") {
+            ?>
+            <header id="nav-wrapper">
+                <nav id="nav">
+                    <div class="nav left">
+                        <span class="gradient skew"><h1 class="logo un-skew"><a
+                                        id="logoID">Školský portál  </a></h1></span>
+                        <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+                    </div>
+                    <div class="nav right">
+                        <a href="../informations/informations.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Návod</span></span></a>
+                        <a href="../details/studentDetail.php" class="nav-link"><span class="nav-link-span active"><span
+                                        class="u-nav">Prehľad študentov</span></span></a>
+
+                        <a href="../latexHandling/latexIndex.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Príklady</span></span></a>
+                        <a href="../controllers/logout-controller.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Odhlásenie</span></span></a>
+                    </div>
+                </nav>
+            </header>
+
+            <input id="toggle" type="checkbox">
+
+            <label for="toggle" class="hamburger">
+                <div class="top-bun"></div>
+                <div class="meat"></div>
+                <div class="bottom-bun"></div>
+            </label>
+
+            <div class="navSmall">
+                <div class="navSmall-wrapperSmall">
+                    <nav id="navSmallHref">
+                        <a href="../informations/informations.php">Návod</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../details/studentDetail.php">Prehľad študentov</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../latexHandling/latexIndex.php">Príklady</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
+                    </nav>
+                </div>
             </div>
-            <div class="nav right">
-                <a href="../index.php" class="nav-link"><span class="nav-link-span active"><span
-                            class="u-nav">Prihlásenie</span></span></a>
-                <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
-                <a href="../registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
-                            class="u-nav">Registrácia</span></span></a>
+
+        <?php } else if (isset($_SESSION["login"]) && $_SESSION["login"]) {
+            if ($_SESSION["role"] == "student") {
+            }
+            ?>
+            <header id="nav-wrapper">
+                <nav id="nav">
+                    <div class="nav left">
+                        <span class="gradient skew"><h1 class="logo un-skew"><a
+                                        id="logoID">Školský portál  </a></h1></span>
+                        <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+                    </div>
+                    <div class="nav right">
+                        <a href="../informations/informations.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Návod</span></span></a>
+                        <a href="../latexHandling/php/studentQuestions.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Príklady</span></span></a>
+                        <a href="../controllers/logout-controller.php" class="nav-link"><span
+                                    class="nav-link-span active"><span
+                                        class="u-nav">Odhlásenie</span></span></a>
+                    </div>
+                </nav>
+            </header>
+
+            <input id="toggle" type="checkbox">
+
+            <label for="toggle" class="hamburger">
+                <div class="top-bun"></div>
+                <div class="meat"></div>
+                <div class="bottom-bun"></div>
+            </label>
+
+            <div class="navSmall">
+                <div class="navSmall-wrapperSmall">
+                    <nav id="navSmallHref">
+                        <a href="../informations/informations.php">Návod</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../latexHandling/php/studentQuestions.php">Príklady</a><br>
+                    </nav>
+                    <nav id="navSmallHref">
+                        <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
+                    </nav>
+                </div>
             </div>
-        </nav>
-    </header>
 
-    <input id="toggle" type="checkbox">
 
-    <label for="toggle" class="hamburger">
-        <div class="top-bun"></div>
-        <div class="meat"></div>
-        <div class="bottom-bun"></div>
-    </label>
+        <?php }
+    } else { ?>
 
-    <div class="navSmall">
-        <div class="navSmall-wrapperSmall">
-            <nav id="navSmallHref">
-                <a href="../index.php">Prihlásenie</a><br>
+        <header id="nav-wrapper">
+            <nav id="nav">
+                <div class="nav left">
+                    <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">Školský portál  </a></h1></span>
+                    <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+                </div>
+                <div class="nav right">
+                    <a href="../index.php" class="nav-link"><span class="nav-link-span active"><span
+                                    class="u-nav">Prihlásenie</span></span></a>
+                    <!--            <a href="index.php" class="nav-link"><span class="nav-link-span active"><span class="u-nav">Prihlásenie</span></span></a>-->
+                    <a href="../registration/registration.php" class="nav-link"><span class="nav-link-span active"><span
+                                    class="u-nav">Registrácia</span></span></a>
+                </div>
             </nav>
-            <nav id="navSmallHref">
-                <a href="../registration/registration.php">Registrácia</a><br>
-            </nav>
+        </header>
+
+        <input id="toggle" type="checkbox">
+
+        <label for="toggle" class="hamburger">
+            <div class="top-bun"></div>
+            <div class="meat"></div>
+            <div class="bottom-bun"></div>
+        </label>
+
+        <div class="navSmall">
+            <div class="navSmall-wrapperSmall">
+                <nav id="navSmallHref">
+                    <a href="../index.php">Prihlásenie</a><br>
+                </nav>
+                <nav id="navSmallHref">
+                    <a href="../registration/registration.php">Registrácia</a><br>
+                </nav>
+            </div>
         </div>
-    </div>
+
+    <?php } ?>
 
     <div class="languageDiv">
         <form method="post" action="../web/language.php">
             <div class="languageDiv">
-                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK" src="https://www.countryflagicons.com/FLAT/24/SK.png"></button>
-                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN" src="https://www.countryflagicons.com/FLAT/24/GB.png"></button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/SK.png">
+                </button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/GB.png">
+                </button>
             </div>
         </form
     </div>
 
-    <div class="container centered-container">
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">Návod</h5>
-                <h6>Registrácia</h6>
-                <p>V prípade, že užívateľ nie je registrovaný, je potrebné sa pri prvom požití systému zaregistrovať. Táto možnosť je v pravej hornej časti obrazovky a po jej
-                    zvolení sa otvorí formulár. Po vyplnení a validácii povinných polí je ešte nutné zvoliť, či je nový užívateľ učiteľ. V prípade, že možnosť zostane nezvolená, užívateľ je automaticky študent.
-                    O úspešnej registrácii informuje upozornenie na obrazovke a používateľ sa môže prihlásiť.</p>
-                <h6>Prihlásenie</h6>
-                <p>Registrovaný používateľ zadá jedinečný email a heslo uvedené pri registrácii. Po úšešnom prihlásení je presmerovaný do svojej časti aplikácie na základe role vybranej pri registrácii.</p>
-                <h6>Dvojjazyčosť</h6>
-                <p>Na každej stránke je možné zvoliť jazyk stránky kliknutím na vlajky. Stránka je dostupná v slovenskom a anglickom jazyku</p>
-                <h5>Návod - učiteľ</h5>
-                <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa učiteľ prihlási. Na navigačnej lište môže zvoliť, či chce zobraziť prehľad študentov, nahrať nový príklad alebo sa odhlásiť</p>
-                <h6>Prehľad študentov</h6>
-                <p>Pokiaľ si učiteľ zvolí možnosť "Prehľad študentov", zobrazí sa mu tabuľka so všetkými zaregistrovanými študentmi, spolu s počtom doteraz vygenerovaných úloh, počtom už odovzdaných úloh a súčtom získaných bodov daného študenta.
-                    Po kliknutí na meno študenta sa učiteľovi zobrazí podrobný prehľad vygenerovaných úloh. Pri každej úlohe je názov úlohy, správna odpoveď a maximálny počet bodov, ktorý môže študent získať.
-                    Pokiaľ už študent úlohu vypracoval, zobrazí sa aj jeho odpoveď, informácia o správnosti jeho odpovede a získaný počet bodov.</p>
-                <h6>Príklady</h6>
-                <p>Po kliknutí na možnosť "Príklady" sa učiteľovi zobrazí formulár na nahranie LaTex súboru s príkladmi. Učiteľ zvolí súbor, zadá počet bodov, ktoré má študent možnosť získať
-                    a rozsah dátumov, kedy je možné vygenerovať si príklad. Pokiaľ nevyberie rozsah dátumov, príklad je možné vygenerovať si kedykoľvek. Pokiaľ k súboru je nutné nahrať aj obrázok, je možné nahrať ho vo formulári nižšie</p>
-                <h5>Návod - študent</h5>
-                <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa študent prihlási. Na navigačnej lište môže zvoliť, či chce prejsť do časti "príklady" alebo sa odhlásiť </p>
-                <h6>Príklady</h6>
-                <p>Pokiaľ si študent zvolí možnosť "Príklady", zobrazí sa mu stránka, kde je možné vygenerovať nový príklad podľa zvoleného mena. Po vygenerovaní príkladu sa príklad pridá do zoznamu
-                príkladov v susednej záložke. V tejto záložke je po kliknutí na príklad možné jeho vypracovanie, pokiaľ ešte vypracovaný nie je, prípadne zobrazenie hodnotenia v prípade, že je
-                príklad už vypracovaný. Po zvolení možnosti "Vypracovať" je užívateľ presunutý na obrazovku s detailom príkladu, kde môže príklad vypracovať a odovzdať, alebo sa vrátiť späť na prehľad príkladov</p>
+    <div class="wholePage">
 
+        <div class="card" style="width: 90vw; margin: 1rem">
+            <div class="card-body">
+                <div style="border-bottom: 1px solid black">
+                    <div style="display: flex; flex-direction: row; justify-content: space-between">
+                        <h3 class="card-title"><b>Návod </b></h3>
+                        <div>
+                            <button id="print" class="btn btn-primary" onclick="printDiv()"> <i class="fa-solid fa-cloud-arrow-down" style="color: #ffffff;"></i>  Uložiť návod</button>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+                <div id="instructions">
+                <h6><b>->Registrácia </b></h6>
+                <p>V prípade, že užívateľ nie je registrovaný, je potrebné sa pri prvom požití systému
+                    zaregistrovať.
+                    Táto možnosť je v pravej hornej časti obrazovky a po jej
+                    zvolení sa otvorí formulár. Po vyplnení a validácii povinných polí je ešte nutné zvoliť, či je
+                    nový
+                    užívateľ učiteľ. V prípade, že možnosť zostane nezvolená, užívateľ je automaticky študent.
+                    O úspešnej registrácii informuje upozornenie na obrazovke a používateľ sa môže prihlásiť.</p>
+                <h6><b>-> Prihlásenie</b></h6>
+                <p>Registrovaný používateľ zadá jedinečný email a heslo uvedené pri registrácii. Po úšešnom
+                    prihlásení
+                    je presmerovaný do svojej časti aplikácie na základe role vybranej pri registrácii.</p>
+                <h6><b>-> Dvojjazyčosť</b></h6>
+                <p>Na každej stránke je možné zvoliť jazyk stránky kliknutím na vlajky. Stránka je dostupná v
+                    slovenskom
+                    a anglickom jazyku</p>
+                <div style="border-bottom: 1px solid grey">
+                    <h5><b>Návod - učiteľ </b></h5>
+                </div>
+                <br>
+                <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa učiteľ prihlási.
+                    Na
+                    navigačnej lište môže zvoliť, či chce zobraziť prehľad študentov, nahrať nový príklad alebo sa
+                    odhlásiť</p>
+                <h6><b>-> Prehľad študentov </b></h6>
+                <p>Pokiaľ si učiteľ zvolí možnosť "Prehľad študentov", zobrazí sa mu tabuľka so všetkými
+                    zaregistrovanými študentmi, spolu s počtom doteraz vygenerovaných úloh, počtom už odovzdaných
+                    úloh a
+                    súčtom získaných bodov daného študenta.
+                    Po kliknutí na meno študenta sa učiteľovi zobrazí podrobný prehľad vygenerovaných úloh. Pri
+                    každej
+                    úlohe je názov úlohy, správna odpoveď a maximálny počet bodov, ktorý môže študent získať.
+                    Pokiaľ už študent úlohu vypracoval, zobrazí sa aj jeho odpoveď, informácia o správnosti jeho
+                    odpovede a získaný počet bodov.</p>
+                <h6><b>-> Príklady</b></h6>
+                <p>Po kliknutí na možnosť "Príklady" sa učiteľovi zobrazí formulár na nahranie LaTex súboru s
+                    príkladmi.
+                    Učiteľ zvolí súbor, zadá počet bodov, ktoré má študent možnosť získať
+                    a rozsah dátumov, kedy je možné vygenerovať si príklad. Pokiaľ nevyberie rozsah dátumov, príklad
+                    je
+                    možné vygenerovať si kedykoľvek. Pokiaľ k súboru je nutné nahrať aj obrázok, je možné nahrať ho
+                    vo
+                    formulári nižšie</p>
+                <div style="border-bottom: 1px solid grey">
+                    <h5><b>Návod - študent</b></h5>
+                </div>
+                <br>
+                <p>Po prihlásení do systému sa na obrazovke zobrazí informácia, pod akým menom sa študent prihlási.
+                    Na
+                    navigačnej lište môže zvoliť, či chce prejsť do časti "príklady" alebo sa odhlásiť </p>
+                <h6><b>-> Príklady</b></h6>
+                <p>Pokiaľ si študent zvolí možnosť "Príklady", zobrazí sa mu stránka, kde je možné vygenerovať nový
+                    príklad podľa zvoleného mena. Po vygenerovaní príkladu sa príklad pridá do zoznamu
+                    príkladov v susednej záložke. V tejto záložke je po kliknutí na príklad možné jeho vypracovanie,
+                    pokiaľ ešte vypracovaný nie je, prípadne zobrazenie hodnotenia v prípade, že je
+                    príklad už vypracovaný. Po zvolení možnosti "Vypracovať" je užívateľ presunutý na obrazovku s
+                    detailom príkladu, kde môže príklad vypracovať a odovzdať, alebo sa vrátiť späť na prehľad
+                    príkladov</p>
+
+            </div>
             </div>
         </div>
 
-
-        <script>
-
-        </script>
-        <!----  <div class="container">
-              <h1>Welcome To School Portal</h1>
-              <div class="rectangle">
-                  <p class="rect-heading">Authentication</p>
-                  <div class="rectangle-content">
-                      <form>
-                          <label for="username">
-                              <input id="email-input" type="email" placeholder="Email">
-                          </label>
-                          <label class="form-label" for="password">
-                              <input id="password-input" type="password" placeholder="Password">
-                          </label>
-                          <button id="sign-in-button" type="button"> Sign In</button>
-                      </form>
-
-                  </div>
-              </div>
-          </div>--->
     </div>
 
     <?php
@@ -242,8 +516,7 @@ if ($language === "SK") {
 
 ?>
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
-
+<script src="printInstuctions.js" />
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"

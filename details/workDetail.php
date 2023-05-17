@@ -93,7 +93,7 @@ $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <link href="studentsDetailStyle.css" rel="stylesheet"/>
 
 
-
+    <link href="../css/menu.css" rel="stylesheet"/>
     <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css">
     <script rel="script" type="text/javascript" src="//cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
 

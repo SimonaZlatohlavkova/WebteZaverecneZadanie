@@ -31,14 +31,12 @@ img {
 }
 
 
-@media (max-width: 1120px) {
-
+@media (max-width: 1480px) {
     .wholePage{
         width: 100%;
         padding: 1rem;
         justify-content: center;
         flex-direction: column;
-
     }
    /* .centered-container {
         margin-top: 10%;

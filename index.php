@@ -50,6 +50,7 @@ if ($language === "EN") {
     <header id="nav-wrapper">
         <nav id="nav">
             <div class="nav left">
+
                 <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">School portal </a></h1></span>
                 <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
             </div>
