@@ -145,9 +145,9 @@ if ($language === "SK") {
                 <tr style="background-color: #57b0f8; color:white; font-weight: bolder">
                     <th>Id</th>
                     <th>Meno a Priezvisko</th>
-                    <th>Pocet vygenerovanych uloh</th>
-                    <th>Pocet odovzdanych uloh</th>
-                    <th>Pocet ziskanych bodov</th>
+                    <th>Počet vygenerovaných úloh</th>
+                    <th>Počet odovzdaných úloh</th>
+                    <th>Počet získaných bodov</th>
                 </tr>
                 </thead>
                 <tbody>
