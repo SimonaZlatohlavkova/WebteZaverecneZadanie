@@ -89,36 +89,38 @@ if ($language === "SK") {
     <div class="languageDiv">
         <form method="post" action="../web/language.php">
             <div class="languageDiv">
-                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK" src="https://www.countryflagicons.com/FLAT/24/SK.png"></button>
-                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN" src="https://www.countryflagicons.com/FLAT/24/GB.png"></button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/SK.png">
+                </button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/GB.png">
+                </button>
             </div>
         </form
     </div>
 
 
     <div id="flexBoxCardsWhole">
-        <div class="card">
-            <div class="card-body">
+        <div class="card ">
+            <div class="card-body table-responsive">
                 <h1>Nahrajte LaTex súbor</h1>
-                <div class="rectangle">
-                    <div class="rectangle-content">
-                        <form class="needs-validation" novalidate>
-                            <label for="file-input">
-                                <input class="form-control" id="file-input" type="file" name="latexFile" accept=".tex"
-                                       multiple="false">
-                            </label>
 
-                            <label for="pointsFile">Počet bodov:</label>
-                            <input type="text" placeholder="--.--" class="form-control" id="pointsFile">
+                <form class="needs-validation" novalidate>
+                    <label for="file-input">
+                        <input class="form-control" id="file-input" type="file" name="latexFile" accept=".tex"
+                               multiple="false">
+                    </label>
 
-                            <label for="dateFromFile"> Dostupné od:</label>
-                            <input type="date" class="form-control" id="dateFromFile" onchange="updateDateToMin()">
-                            <label for="dateToFile"> Dostupné do:</label>
-                            <input type="date" class="form-control" id="dateToFile">
-                            <button id="upload-button" class="btn btn-primary" type="button"> Nahrať</button>
-                        </form>
-                    </div>
-                </div>
+                    <label for="pointsFile">Počet bodov:</label>
+                    <input type="text" placeholder="--.--" class="form-control" id="pointsFile">
+
+                    <label for="dateFromFile"> Dostupné od:</label>
+                    <input type="date" class="form-control" id="dateFromFile" onchange="updateDateToMin()">
+                    <label for="dateToFile"> Dostupné do:</label>
+                    <input type="date" class="form-control" id="dateToFile">
+                    <button id="upload-button" class="btn btn-primary" type="button"> Nahrať</button>
+                </form>
+
             </div>
         </div>
         <div class="card">
@@ -192,21 +194,25 @@ if ($language === "EN") {
     <div class="languageDiv">
         <form method="post" action="../web/language.php">
             <div class="languageDiv">
-                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK" src="https://www.countryflagicons.com/FLAT/24/SK.png"></button>
-                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN" src="https://www.countryflagicons.com/FLAT/24/GB.png"></button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/SK.png">
+                </button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/GB.png">
+                </button>
             </div>
         </form
     </div>
 
     <div id="flexBoxCardsWhole">
         <div class="card">
-            <div class="card-body">
+            <div class="card-body table-responsive">
                 <h1>Upload LaTex file</h1>
-                <div class="rectangle">
-                    <div class="rectangle-content">
+
                         <form class="needs-validation" novalidate>
                             <label for="file-input">
-                                <input  class="form-control file" data-language="es" id="file-input" type="file" name="latexFile" accept=".tex"
+                                <input class="form-control file" data-language="es" id="file-input" type="file"
+                                       name="latexFile" accept=".tex"
                                        multiple="false">
                             </label>
 
@@ -219,8 +225,7 @@ if ($language === "EN") {
                             <input type="date" class="form-control" id="dateToFile">
                             <button id="upload-button" class="btn btn-primary" type="button"> Upload</button>
                         </form>
-                    </div>
-                </div>
+
             </div>
         </div>
         <div class="card">
@@ -228,7 +233,8 @@ if ($language === "EN") {
                 <h1>Upload image for LaTexový file </h1>
                 <form class="needs-validation" novalidate>
                     <label for="image-input">
-                        <input class="form-control" data-language="es" id="image-input" type="file" name="latexImage" multiple="false">
+                        <input class="form-control" data-language="es" id="image-input" type="file" name="latexImage"
+                               multiple="false">
                     </label>
 
                     <button id="upload-image-button" class="btn btn-primary" type="button"> Upload</button>
