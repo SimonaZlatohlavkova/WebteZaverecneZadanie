@@ -16,6 +16,12 @@ if (!isset($_POST["answer"])) {
     exit;
 }
 
+if (!isset($_SESSION["login"]) || !$_SESSION["login"]) {
+    header("Location: ../../index.php");
+    exit();
+    
+}
+
 $studentMail = $_SESSION["email"];
 
 require_once "config.php";
@@ -32,6 +38,11 @@ $maxPoints = $solution['maxPoints'];
 
 function convertLatexToMaxima($latexCode)
 {
+    if (substr_count($latexCode, '=') > 1) {
+        $pos = strpos($latexCode, '=', strpos($latexCode, '=') + 1);
+
+        $latexCode = trim(substr($latexCode, 0, $pos));
+    }
 
     // var_dump($latexCode);
     // Remove unnecessary spaces
@@ -125,7 +136,7 @@ $result = compareExpressions($studentAnswer, $correctSolution);
 echo $result;
 
 $correct = 0;
-if ($result){
+if ($result) {
     $correct = 1;
     $points = $maxPoints;
 } else {
