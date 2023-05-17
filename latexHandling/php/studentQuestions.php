@@ -13,7 +13,7 @@ $language = $_SESSION['lang'] ?? 'SK';
 $db = new PDO("mysql:host=$hostname;dbname=$dbname", $username, $password);
 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-$sqlSelect = "SELECT name FROM latexFiles";
+$sqlSelect = "SELECT name FROM latexFiles WHERE (validFrom IS NULL OR validFrom <= CURDATE()) AND (validTo IS NULL OR validTo >= CURDATE())";
 $stmt = $db->query($sqlSelect);
 $names = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -289,7 +289,23 @@ if ($language === "EN") {
                         echo "";
                     } ?>" id="<?php echo $i; ?>" role="tabpanel" >
                     <div class='questionName'><?php $studentQuestion['question_name']; ?></div> <?php
-                    echo "<div id='question' class='question'>" . $studentQuestion['question'] . "</div>";
+
+                    if ($studentQuestion['answer'] == null) {
+                        $color="black";
+                    } else {
+                        if ($studentQuestion['correct'] == 1) {
+                            $color="green";
+                        } else if ($studentQuestion['correct'] == 0) {
+                            $color="red";
+                        }
+                    }
+                    ?>
+                    <div id="question" class="question" style="color: <?php echo $color; ?>">
+                        <b>
+                            <?php echo $studentQuestion['question']; ?>
+                        </b>
+                    </div>
+                    <?php
 
                     $sqlSelectImage = "SELECT image FROM latexImages WHERE name = ?";
                     $stmt = $db->prepare($sqlSelectImage);
@@ -302,9 +318,15 @@ if ($language === "EN") {
                         echo '<div class="image"><img width="auto" height="auto" src="' . $image . '" alt="' . $image . '"></div>';
                     }
 
-
-                    echo '<a href="submitMath.php?sectionName=' . urlencode($studentQuestion['question_name']) . '"> <b>  Elaborate </b></a> ';
-
+                    if ($studentQuestion['answer'] == null) {
+                        echo '<a href="submitMath.php?sectionName=' . urlencode($studentQuestion['question_name']) . '"> <b>  Elaborate</b></a> ';
+                    } else {
+                        if ($studentQuestion['correct'] == 1) {
+                            echo '<div style="color: #ffffff;background-color: #2e7703;padding: 0.3rem; border-radius: 0.2rem"><b>Correct</b></div>';
+                        } else if ($studentQuestion['correct'] == 0) {
+                            echo '<div style="color: #ffffff;background-color: #980019;padding: 0.3rem; border-radius: 0.2rem"><b>Incorrect</b></div>';
+                        }
+                    }
                     ?>
                 </div><?php
                 $i++;
@@ -479,6 +501,7 @@ if ($language === "SK") {
                     <?php
                     $first = true;
                     $i = 0;
+                    $color="black";
                     foreach ($studentQuestions
 
                     as $studentQuestion) {
@@ -489,7 +512,24 @@ if ($language === "SK") {
                         echo "";
                     } ?>" id="<?php echo $i; ?>" role="tabpanel" >
                     <div class='questionName'><?php $studentQuestion['question_name']; ?></div> <?php
-                    echo "<div id='question' class='question'>" . $studentQuestion['question'] . "</div>";
+
+                    if ($studentQuestion['answer'] == null) {
+                        $color="black";
+                    } else {
+                        if ($studentQuestion['correct'] == 1) {
+                           $color="green";
+                        } else if ($studentQuestion['correct'] == 0) {
+                            $color="red";
+                        }
+                    }
+
+                  ?>
+                    <div id="question" class="question" style="color: <?php echo $color; ?>">
+                        <b>
+                        <?php echo $studentQuestion['question']; ?>
+                        </b>
+                    </div>
+                    <?php
 
                     $sqlSelectImage = "SELECT image FROM latexImages WHERE name = ?";
                     $stmt = $db->prepare($sqlSelectImage);
@@ -503,14 +543,14 @@ if ($language === "SK") {
                     }
 
 
-                    if ($studentQuestion['answer'] == null){
+                    if ($studentQuestion['answer'] == null) {
                         echo '<a href="submitMath.php?sectionName=' . urlencode($studentQuestion['question_name']) . '"> <b>  Vypracovať </b></a> ';
-                    }
-
-                    if ($studentQuestion['correct'] == 1){
-                        echo '<p>Správne</p>';
-                    } else if ($studentQuestion['correct'] == 0){
-                        echo '<p>Nesprávne</p>';
+                    } else {
+                        if ($studentQuestion['correct'] == 1) {
+                            echo '<div style="color: #ffffff;background-color: #2e7703;padding: 0.3rem; border-radius: 0.2rem"><b>Správne</b></div>';
+                        } else if ($studentQuestion['correct'] == 0) {
+                            echo '<div style="color: #ffffff;background-color: #980019;padding: 0.3rem; border-radius: 0.2rem"><b>Nesprávne</b></div>';
+                        }
                     }
 
                     ?>

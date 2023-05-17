@@ -41,21 +41,12 @@ if (isset($_FILES["latexFile"])) {
 if (isset($_FILES["image"])){
     $file = $_FILES["image"]["tmp_name"];
     $fileData = file_get_contents($file);
-    $points = $_POST['points'];
-    $dateFrom = $_POST['dateFrom'];
-    $dateTo = $_POST['dateTo'];
 
-    if($dateFrom !== "" && $dateTo !== "") {
 
-        $sql = "INSERT INTO latexImages (name, image, points, validFrom, validTo) VALUES (?, ?, ?, ?, ?)";
-        $stmt = $db->prepare($sql);
-        $success = $stmt->execute([$_FILES["image"]["name"], $fileData, $points, $dateFrom, $dateTo]);
-    }
-    else{
-        $sql = "INSERT INTO latexImages (name, image) VALUES (?, ?)";
-        $stmt = $db->prepare($sql);
-        $success = $stmt->execute([$_FILES["image"]["name"], $fileData]);
-    }
+    $sql = "INSERT INTO latexImages (name, image) VALUES (?, ?)";
+    $stmt = $db->prepare($sql);
+    $success = $stmt->execute([$_FILES["image"]["name"], $fileData]);
+
 
     if ($success) {
         echo "Image uploaded successfully!";

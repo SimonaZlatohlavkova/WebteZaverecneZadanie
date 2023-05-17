@@ -5,11 +5,11 @@ if (isset($_SESSION['login']) && $_SESSION['login']) {
     header("location: ../index.php");
     exit;
 }
-if ($_SESSION["role"] == "student") {
+if (isset($_SESSION["role"]) && $_SESSION["role"] == "student") {
     header("Location: studentMenu.php");
     exit();
 }
-if ($_SESSION["role"] == "teacher") {
+if ( isset($_SESSION["role"]) && $_SESSION["role"] == "teacher") {
     header("Location: teacherMenu.php");
     exit();
 }

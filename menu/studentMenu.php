@@ -12,6 +12,8 @@ if ($_SESSION["role"] == "teacher") {
     exit();
 }
 
+$language = $_SESSION['lang'] ?? 'SK';
+
 ?>
 
 <!doctype html>
@@ -34,6 +36,11 @@ if ($_SESSION["role"] == "teacher") {
 </head>
 <body>
 
+<?php
+
+if ($language === "SK") {
+?>
+
 
 <header id="nav-wrapper">
     <nav id="nav">
@@ -42,10 +49,10 @@ if ($_SESSION["role"] == "teacher") {
             <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
         </div>
         <div class="nav right">
-            <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
-                            class="u-nav">Odhlásenie</span></span></a>
             <a href="../latexHandling/php/studentQuestions.php" class="nav-link"><span class="nav-link-span active"><span
                             class="u-nav">Príklady</span></span></a>
+            <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
+                            class="u-nav">Odhlásenie</span></span></a>
         </div>
     </nav>
 </header>
@@ -60,11 +67,12 @@ if ($_SESSION["role"] == "teacher") {
 
 <div class="navSmall">
     <div class="navSmall-wrapperSmall">
-        <nav id="navSmallHref">
-            <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
-        </nav>
+
         <nav id="navSmallHref">
             <a href="../latexHandling/php/studentQuestions.php">Príklady</a><br>
+        </nav>
+        <nav id="navSmallHref">
+            <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
         </nav>
     </div>
 </div>
@@ -75,6 +83,85 @@ if ($_SESSION["role"] == "teacher") {
     <p class="welcomeMessage">Ste prihlásený ako študent pod menom <?php echo $_SESSION["name"] ?></p>
 </div>
 
+
+<div class="languageDiv" style="position:fixed; bottom:0.5rem; left: 0">
+    <form method="post" action="../web/language.php">
+        <div class="languageDiv">
+            <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK"
+                                                                                 src="https://www.countryflagicons.com/FLAT/24/SK.png">
+            </button>
+            <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN"
+                                                                                 src="https://www.countryflagicons.com/FLAT/24/GB.png">
+            </button>
+        </div>
+    </form
+</div>
+
+<?php } ?>
+
+
+<?php
+
+if ($language === "EN") {
+    ?>
+
+
+    <header id="nav-wrapper">
+        <nav id="nav">
+            <div class="nav left">
+                <span class="gradient skew"><h1 class="logo un-skew"><a id="logoID">School portal  </a></h1></span>
+                <button id="menu" class="btn-nav"><span class="fas fa-bars"></span></button>
+            </div>
+            <div class="nav right">
+                <a href="../latexHandling/php/studentQuestions.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Assignments</span></span></a>
+                <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
+                                class="u-nav">Log out</span></span></a>
+            </div>
+        </nav>
+    </header>
+
+    <input id="toggle" type="checkbox">
+
+    <label for="toggle" class="hamburger">
+        <div class="top-bun"></div>
+        <div class="meat"></div>
+        <div class="bottom-bun"></div>
+    </label>
+
+    <div class="navSmall">
+        <div class="navSmall-wrapperSmall">
+
+            <nav id="navSmallHref">
+                <a href="../latexHandling/php/studentQuestions.php">Assignments</a><br>
+            </nav>
+            <nav id="navSmallHref">
+                <a href="../controllers/logout-controller.php">Log out</a><br>
+            </nav>
+        </div>
+    </div>
+
+
+    <div class="welcomeDiv">
+        <p class="Welcome">Welcome !</p>
+        <p class="welcomeMessage">You are signed as student, <?php echo $_SESSION["name"] ?></p>
+    </div>
+
+
+    <div class="languageDiv" style="position:fixed; bottom:0.5rem; left: 0">
+        <form method="post" action="../web/language.php">
+            <div class="languageDiv">
+                <button type="submit" class="ButtonLanguageDiv" name="buttonSK"><img alt="SK"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/SK.png">
+                </button>
+                <button type="submit" class="ButtonLanguageDiv" name="buttonEN"><img alt="EN"
+                                                                                     src="https://www.countryflagicons.com/FLAT/24/GB.png">
+                </button>
+            </div>
+        </form
+    </div>
+
+<?php } ?>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
         integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"

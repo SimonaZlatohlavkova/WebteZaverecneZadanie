@@ -7,12 +7,12 @@ if (!isset($_SESSION["login"]) || !$_SESSION["login"]) {
     exit();
 }
 
-if ($_SESSION["role"] == "student") {
+if (isset($_SESSION["role"]) && $_SESSION["role"] == "student") {
     header("Location: studentMenu.php");
     exit();
 }
 
-
+$id = $_GET['id'];
 require_once "config.php";
 
 
@@ -24,19 +24,19 @@ catch(PDOException $e){
     ECHO $e->getMessage();
 }
 
+
 $query = "SELECT u.id, u.first_name, u.last_name,
             COUNT(sq.id) AS generated_questions,
             SUM(CASE WHEN sq.answer IS NOT NULL THEN 1 ELSE 0 END) AS answered_questions,
-            SUM(COALESCE(sq.correct, 0)) AS total_points         
+            SUM(COALESCE(sq.correct, 0)) AS total_points
             FROM users u
-            LEFT JOIN studentquestions sq ON sq.student_name = CONCAT(u.first_name, ' ', u.last_name)
+            LEFT JOIN studentQuestions sq ON sq.student_name = CONCAT(u.first_name, ' ', u.last_name)
             WHERE u.role = 'student'
             GROUP BY u.id, u.first_name, u.last_name
             ORDER BY u.last_name ASC";
 
 $stmt = $db->query($query);
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
 //var_dump($results);
 
 
@@ -76,14 +76,39 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 </div>
                 <div class="nav right">
                     <a href="../details/studentDetail.php" class="nav-link"><span class="nav-link-span active"><span
-                                class="u-nav">Prehľad študentov</span></span></a>
-                    <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
-                                class="u-nav">Odhlásenie</span></span></a>
+                                    class="u-nav">Prehľad študentov</span></span></a>
                     <a href="../latexHandling/latexIndex.php" class="nav-link"><span class="nav-link-span active"><span
-                                class="u-nav">Príklady</span></span></a>
+                                    class="u-nav">Príklady</span></span></a>
+                    <a href="../controllers/logout-controller.php" class="nav-link"><span class="nav-link-span active"><span
+                                    class="u-nav">Odhlásenie</span></span></a>
                 </div>
             </nav>
         </header>
+
+        <input id="toggle" type="checkbox">
+
+        <label for="toggle" class="hamburger">
+            <div class="top-bun"></div>
+            <div class="meat"></div>
+            <div class="bottom-bun"></div>
+        </label>
+
+        <div class="navSmall">
+            <div class="navSmall-wrapperSmall">
+                <nav id="navSmallHref">
+                    <a href="../details/studentDetail.php">Prehľad študentov</a><br>
+                </nav>
+
+                <nav id="navSmallHref">
+                    <a href="../latexHandling/latexIndex.php">Príklady</a><br>
+                </nav>
+                <nav id="navSmallHref">
+                    <a href="../controllers/logout-controller.php">Odhlásenie</a><br>
+                </nav>
+            </div>
+        </div>
+
+
 
 
         <div class="container">
@@ -101,24 +126,30 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 if (isset($results)) {
 
-                    foreach ($results as $result) {
-                        echo
-                            "<tr>
-                                    <td>" . $result["id"] . "</td>
-                                    <td>" . $result["first_name"] . ' ' . $result["last_name"] . "</td>
-                                    <td>" . $result["generated_questions"] . "</td>
-                                    <td>" . $result["answered_questions"] . "</td>
-                                    <td>" . $result["total_points"] . "</td>
+                    foreach ($results as $result) {?>
+                       <tr>
+                                    <td><?= $result["id"] ?></td>
+                                    <td><a href="workDetail.php?id=<?= $result['id'] ?>" class="Detail"><?= $result["first_name"] . ' ' . $result["last_name"] ?></td>
+                                    <td><?= $result["generated_questions"] ?></td>
+                                    <td><?= $result["answered_questions"] ?></td>
+                                    <td><?=$result["total_points"] ?></td>
 
-                                </tr>";
+                                </tr>
+                        <?php
                     }
                 }
                 ?>
                 </tbody>
             </table>
+            <button id="download-csv" type="button">Stiahnuť CSV</button>
         </div>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+                integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+                integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+                crossorigin="anonymous"></script>
         <script src="../scripts/tables.js"></script>
     </body>
 </html>
