@@ -12,7 +12,7 @@ if (isset($_SESSION["role"]) && $_SESSION["role"] == "student") {
     exit();
 }
 
-
+$id = $_GET['id'];
 require_once "config.php";
 
 
@@ -126,16 +126,16 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <?php
                 if (isset($results)) {
 
-                    foreach ($results as $result) {
-                        echo
-                            "<tr>
-                                    <td>" . $result["id"] . "</td>
-                                    <td>" . $result["first_name"] . ' ' . $result["last_name"] . "</td>
-                                    <td>" . $result["generated_questions"] . "</td>
-                                    <td>" . $result["answered_questions"] . "</td>
-                                    <td>" . $result["total_points"] . "</td>
+                    foreach ($results as $result) {?>
+                       <tr>
+                                    <td><?= $result["id"] ?></td>
+                                    <td><a href="workDetail.php?id=<?= $result['id'] ?>" class="Detail"><?= $result["first_name"] . ' ' . $result["last_name"] ?></td>
+                                    <td><?= $result["generated_questions"] ?></td>
+                                    <td><?= $result["answered_questions"] ?></td>
+                                    <td><?=$result["total_points"] ?></td>
 
-                                </tr>";
+                                </tr>
+                        <?php
                     }
                 }
                 ?>
