@@ -119,6 +119,7 @@ if (isset($_SESSION['latexFile'])) {
 
     unset($_SESSION['latexFile']);
     unset($_SESSION['points']);
+    header('Location: studentQuestions.php');
 }
 
 ?>
